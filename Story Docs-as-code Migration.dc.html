@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poltawski+Nowy:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#1E1E1E;color:#F7F4EB;font-family:"Gotham","Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#FFC600;text-decoration:none}
+a:hover{color:#FF8F1F}
+[data-scroll-row]{scrollbar-width:none}
+[data-scroll-row]::-webkit-scrollbar{display:none}
+@media (max-width:760px){[data-nav-links]{display:none !important}}
+@media (min-width:761px){[data-nav-mobile]{display:none !important}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:20;background:rgba(30,30,30,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(247,244,235,.08)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,40px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="./Mondi.tech%20Homepage.dc.html" aria-label="Mondi.tech home" style="display:flex;align-items:center;min-height:44px"><img src="./assets/logo-color.svg" alt="Mondi.tech" style="height:40px;width:auto;display:block"></a>
+    <nav aria-label="Primary" data-nav-links style="display:flex;align-items:center;gap:8px">
+      <a href="./Services.dc.html" style="color:#CBCBCB;font-size:15px;font-weight:500;padding:12px 14px;min-height:44px;display:inline-flex;align-items:center" style-hover="color:#F7F4EB">Services</a>
+      <a href="./Success%20Stories.dc.html" style="color:#CBCBCB;font-size:15px;font-weight:500;padding:12px 14px;min-height:44px;display:inline-flex;align-items:center" style-hover="color:#F7F4EB">Success stories</a>
+      <a href="./Mondi.tech%20Homepage.dc.html#team" style="color:#CBCBCB;font-size:15px;font-weight:500;padding:12px 14px;min-height:44px;display:inline-flex;align-items:center" style-hover="color:#F7F4EB">Team</a>
+      <a href="./Mondi.tech%20Homepage.dc.html#contact" style="margin-left:8px;color:#1E1E1E;background:#FFC600;font-size:15px;font-weight:600;padding:12px 22px;min-height:44px;border-radius:999px;display:inline-flex;align-items:center" style-hover="background:#FF8F1F;color:#1E1E1E">Contact us</a>
+    </nav>
+    <a href="./Mondi.tech%20Homepage.dc.html#contact" data-nav-mobile style="color:#1E1E1E;background:#FFC600;font-size:14px;font-weight:600;padding:0 18px;height:44px;border-radius:999px;display:inline-flex;align-items:center" style-hover="background:#FF8F1F">Contact us</a>
+  </div>
+</header>
+
+<main id="top">
+  <section style="position:relative;background:#1E1E1E;overflow:hidden">
+    <img src="./assets/pattern.svg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.14;pointer-events:none;user-select:none">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,30,30,0) 40%,#1E1E1E 100%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding-left:clamp(20px,5vw,40px);padding-right:clamp(20px,5vw,40px);padding-top:clamp(56px,9vw,110px);padding-bottom:clamp(48px,7vw,90px)">
+      <div style="max-width:800px;display:flex;flex-direction:column;gap:22px">
+        <p style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#FFC600">Success story · Telecommunications technology</p>
+        <h1 style="margin:0;font-size:clamp(30px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;font-weight:700;color:#F7F4EB;text-wrap:balance">Tens of thousands of pages, <span style="font-family:'Poltawski Nowy',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:#FFC600">migrated from DITA to AsciiDoc</span></h1>
+        <p style="margin:0;max-width:640px;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#ABB1B4;text-wrap:pretty">A telecommunications technology company needed its full documentation library moved out of DITA and into a docs-as-code toolchain — without a multi-year project or a drop in quality.</p>
+      </div>
+    </div>
+  </section>
+  <section style="background:#1E1E1E">
+    <div style="max-width:1200px;margin:0 auto;padding-left:clamp(20px,5vw,40px);padding-right:clamp(20px,5vw,40px);padding-bottom:clamp(64px,8vw,96px)">
+      <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+        <div style="display:flex;flex-direction:column;gap:6px;padding:24px 28px;border-radius:20px;background:#262626;border:1px solid rgba(247,244,235,.08)"><dt style="font-size:13px;color:#8C9698;order:2">pages migrated</dt><dd style="margin:0;font-size:clamp(22px,2.4vw,30px);font-weight:700;color:#FFC600;line-height:1.15;order:1">Tens of thousands</dd></div><div style="display:flex;flex-direction:column;gap:6px;padding:24px 28px;border-radius:20px;background:#262626;border:1px solid rgba(247,244,235,.08)"><dt style="font-size:13px;color:#8C9698;order:2">single source format</dt><dd style="margin:0;font-size:clamp(22px,2.4vw,30px);font-weight:700;color:#FFC600;line-height:1.15;order:1">DITA → AsciiDoc</dd></div><div style="display:flex;flex-direction:column;gap:6px;padding:24px 28px;border-radius:20px;background:#262626;border:1px solid rgba(247,244,235,.08)"><dt style="font-size:13px;color:#8C9698;order:2">human-reviewed output</dt><dd style="margin:0;font-size:clamp(22px,2.4vw,30px);font-weight:700;color:#FFC600;line-height:1.15;order:1">100%</dd></div>
+      </dl>
+    </div>
+  </section>
+  <section style="background:#F7F4EB;color:#1E1E1E">
+    <div style="max-width:1200px;margin:0 auto;padding-left:clamp(20px,5vw,40px);padding-right:clamp(20px,5vw,40px);padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(72px,10vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px"><p style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#5C5A6B">Challenge</p><h2 style="margin:0;font-size:clamp(24px,3vw,36px);line-height:1.15;letter-spacing:-.015em;font-weight:700;text-wrap:balance">Scale that ruled out <span style="font-family:'Poltawski Nowy',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:#FF8F1F">a manual approach</span></h2></div>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:#5C5A6B;text-wrap:pretty;grid-column:span 1">The library had grown over many years in DITA: deep topic hierarchies, conditional profiling, thousands of cross-references and a long tail of inconsistent markup. Manual conversion at that volume was not viable, and a plain script would have left too many broken links and malformed tables for writers to fix by hand.</p>
+    </div>
+  </section>
+  <section style="background:#1E1E1E">
+    <div style="max-width:1200px;margin:0 auto;padding-left:clamp(20px,5vw,40px);padding-right:clamp(20px,5vw,40px);padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(72px,10vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px"><p style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#FFC600">Approach</p><h2 style="margin:0;font-size:clamp(24px,3vw,36px);line-height:1.15;letter-spacing:-.015em;font-weight:700;color:#F7F4EB;text-wrap:balance">Scripts and AI for the volume, <span style="font-family:'Poltawski Nowy',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:#FFC600">writers for the judgement</span></h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px"><p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#758086">Tools used</p><div style="display:flex;flex-wrap:wrap;gap:8px"><span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:#FFC600;border:1px solid rgba(255,198,0,.4)">DITA</span><span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:#FFC600;border:1px solid rgba(255,198,0,.4)">AsciiDoc</span><span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:#FFC600;border:1px solid rgba(255,198,0,.4)">Python conversion scripts</span><span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:#FFC600;border:1px solid rgba(255,198,0,.4)">LLM-assisted cleanup</span><span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:#FFC600;border:1px solid rgba(255,198,0,.4)">Git</span><span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:#FFC600;border:1px solid rgba(255,198,0,.4)">CI publishing</span></div></div>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px">
+        <li style="display:flex;gap:18px;align-items:flex-start;padding:20px 24px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="flex:0 0 auto;font-size:13px;font-weight:600;color:#FFC600;letter-spacing:.1em;padding-top:3px">01</span><p style="margin:0;font-size:16px;line-height:1.6;color:#CBCBCB;text-wrap:pretty">Analysed the DITA source to classify content patterns and estimate where automated conversion would hold and where it would break.</p></li><li style="display:flex;gap:18px;align-items:flex-start;padding:20px 24px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="flex:0 0 auto;font-size:13px;font-weight:600;color:#FFC600;letter-spacing:.1em;padding-top:3px">02</span><p style="margin:0;font-size:16px;line-height:1.6;color:#CBCBCB;text-wrap:pretty">Built a scripted conversion pipeline from DITA to AsciiDoc, preserving structure, conditional content and cross-references.</p></li><li style="display:flex;gap:18px;align-items:flex-start;padding:20px 24px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="flex:0 0 auto;font-size:13px;font-weight:600;color:#FFC600;letter-spacing:.1em;padding-top:3px">03</span><p style="margin:0;font-size:16px;line-height:1.6;color:#CBCBCB;text-wrap:pretty">Used LLM-assisted cleanup for the residual problems scripts could not resolve: irregular tables, inline markup drift and inconsistent terminology.</p></li><li style="display:flex;gap:18px;align-items:flex-start;padding:20px 24px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="flex:0 0 auto;font-size:13px;font-weight:600;color:#FFC600;letter-spacing:.1em;padding-top:3px">04</span><p style="margin:0;font-size:16px;line-height:1.6;color:#CBCBCB;text-wrap:pretty">Routed every converted page through writer review with a defined checklist before it entered the new Git repository.</p></li><li style="display:flex;gap:18px;align-items:flex-start;padding:20px 24px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="flex:0 0 auto;font-size:13px;font-weight:600;color:#FFC600;letter-spacing:.1em;padding-top:3px">05</span><p style="margin:0;font-size:16px;line-height:1.6;color:#CBCBCB;text-wrap:pretty">Set up an AsciiDoc build and CI publishing pipeline, and trained the in-house team on the new workflow.</p></li>
+      </ol>
+    </div>
+  </section>
+  <section style="background:#F7F4EB;color:#1E1E1E">
+    <div style="max-width:1200px;margin:0 auto;padding-left:clamp(20px,5vw,40px);padding-right:clamp(20px,5vw,40px);padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(72px,10vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px"><p style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#5C5A6B">Outcome</p><h2 style="margin:0;font-size:clamp(24px,3vw,36px);line-height:1.15;letter-spacing:-.015em;font-weight:700;text-wrap:balance">Delivered, and <span style="font-family:'Poltawski Nowy',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:#FF8F1F">handed over</span></h2></div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5C5A6B;text-wrap:pretty">The complete library now lives in plain-text AsciiDoc under version control, publishes automatically and can be edited by engineers and writers alike. The combination of scripted conversion, AI-assisted cleanup and human review delivered the migration in a fraction of the time a manual approach would have taken.</p>
+        <a href="./Story%20Training%20Modules.dc.html" style="display:inline-flex;align-items:center;min-height:44px;font-weight:600;font-size:16px;color:#1E1E1E;border-bottom:2px solid #FFC600;align-self:flex-start" style-hover="color:#FF8F1F;border-color:#FF8F1F">Next story: 40+ training modules in two weeks →</a>
+      </div>
+    </div>
+  </section>
+  <div style="background:#1E1E1E;height:clamp(48px,6vw,80px)"></div>
+  <section style="background:#1E1E1E;padding:0 clamp(20px,5vw,40px) clamp(72px,10vw,120px)">
+    <div style="max-width:1200px;margin:0 auto;background:#FFC600;color:#1E1E1E;border-radius:28px;padding:clamp(40px,6vw,64px) clamp(24px,5vw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px">
+      <h2 style="margin:0;font-size:clamp(26px,3.2vw,40px);line-height:1.12;letter-spacing:-.015em;font-weight:700;max-width:560px;text-wrap:balance">Have a similar project? <span style="font-family:'Poltawski Nowy',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0">Let's talk.</span></h2>
+      <a href="./Mondi.tech%20Homepage.dc.html#contact" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 32px;border-radius:999px;background:#1E1E1E;color:#F7F4EB;font-weight:600;font-size:16px;transition:background .2s" style-hover="background:#333;color:#F7F4EB">Contact us</a>
+    </div>
+  </section>
+</main>
+
+<footer style="background:#161616;border-top:1px solid rgba(247,244,235,.08);color:#ABB1B4">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,72px) clamp(20px,5vw,40px) 32px;display:flex;flex-direction:column;gap:44px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:18px;grid-column:span 1">
+        <img src="./assets/logo-mono.svg" alt="Mondi.tech" style="height:56px;width:auto;display:block;align-self:flex-start">
+        <p style="margin:0;font-size:15px;line-height:1.5;color:#8C9698">Content, engineered for the AI era.</p>
+      </div>
+      <address style="font-style:normal;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.6">
+        <span style="color:#F7F4EB;font-weight:600">Mondi.tech Kft.</span>
+        <span>Váci út 1–3, 1062 Budapest, Hungary</span>
+        <a href="tel:+3612345678" style="color:#ABB1B4;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#FFC600">+36 1 234 5678</a>
+        <a href="mailto:hello@mondi.tech" style="color:#ABB1B4;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#FFC600">hello@mondi.tech</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" style="color:#ABB1B4;display:inline-flex;min-height:32px;align-items:center;font-weight:500" style-hover="color:#FFC600">LinkedIn ↗</a>
+      </address>
+      <nav aria-label="Footer" style="display:flex;flex-direction:column;gap:2px;font-size:15px">
+        <a href="./Mondi.tech%20Homepage.dc.html" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">About us</a>
+        <a href="./Mondi.tech%20Homepage.dc.html#team" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Team</a>
+        <a href="./Services.dc.html" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Services</a>
+        <a href="./Success%20Stories.dc.html" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Success stories</a>
+        <a href="./Mondi.tech%20Homepage.dc.html#contact" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Contact us</a>
+      </nav>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid rgba(247,244,235,.08);font-size:13px;color:#6C767C">
+      <span>© 2026 Mondi.tech. All rights reserved.</span>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="color:#6C767C;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#ABB1B4">Privacy</a>
+        <a href="#" style="color:#6C767C;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#ABB1B4">Careers</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

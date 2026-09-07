@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poltawski+Nowy:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#1E1E1E;color:#F7F4EB;font-family:"Gotham","Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#FFC600;text-decoration:none}
+a:hover{color:#FF8F1F}
+[data-scroll-row]{scrollbar-width:none}
+[data-scroll-row]::-webkit-scrollbar{display:none}
+@media (max-width:760px){[data-nav-links]{display:none !important}}
+@media (min-width:761px){[data-nav-mobile]{display:none !important}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:20;background:rgba(30,30,30,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(247,244,235,.08)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,40px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="./Mondi.tech%20Homepage.dc.html" aria-label="Mondi.tech home" style="display:flex;align-items:center;min-height:44px"><img src="./assets/logo-color.svg" alt="Mondi.tech" style="height:40px;width:auto;display:block"></a>
+    <nav aria-label="Primary" data-nav-links style="display:flex;align-items:center;gap:8px">
+      <a href="./Services.dc.html" style="color:#CBCBCB;font-size:15px;font-weight:500;padding:12px 14px;min-height:44px;display:inline-flex;align-items:center" style-hover="color:#F7F4EB">Services</a>
+      <a href="./Success%20Stories.dc.html" style="color:#CBCBCB;font-size:15px;font-weight:500;padding:12px 14px;min-height:44px;display:inline-flex;align-items:center" style-hover="color:#F7F4EB">Success stories</a>
+      <a href="./Mondi.tech%20Homepage.dc.html#team" style="color:#CBCBCB;font-size:15px;font-weight:500;padding:12px 14px;min-height:44px;display:inline-flex;align-items:center" style-hover="color:#F7F4EB">Team</a>
+      <a href="./Mondi.tech%20Homepage.dc.html#contact" style="margin-left:8px;color:#1E1E1E;background:#FFC600;font-size:15px;font-weight:600;padding:12px 22px;min-height:44px;border-radius:999px;display:inline-flex;align-items:center" style-hover="background:#FF8F1F;color:#1E1E1E">Contact us</a>
+    </nav>
+    <a href="./Mondi.tech%20Homepage.dc.html#contact" data-nav-mobile style="color:#1E1E1E;background:#FFC600;font-size:14px;font-weight:600;padding:0 18px;height:44px;border-radius:999px;display:inline-flex;align-items:center" style-hover="background:#FF8F1F">Contact us</a>
+  </div>
+</header>
+
+<main id="top">
+  <section style="position:relative;background:#1E1E1E;overflow:hidden">
+    <img src="./assets/pattern.svg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.14;pointer-events:none;user-select:none">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,30,30,0) 40%,#1E1E1E 100%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding-left:clamp(20px,5vw,40px);padding-right:clamp(20px,5vw,40px);padding-top:clamp(56px,9vw,110px);padding-bottom:clamp(40px,6vw,72px)">
+      <div style="max-width:800px;display:flex;flex-direction:column;gap:22px">
+        <p style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#FFC600"><a href="./Services.dc.html" style="color:#ABB1B4" style-hover="color:#FFC600">Services</a> <span style="color:#5C5A6B;margin:0 6px">/</span> Track 1 · Managed writing</p>
+        <h1 style="margin:0;font-size:clamp(30px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;font-weight:700;color:#F7F4EB;text-wrap:balance">We write it for you — <span style="font-family:'Poltawski Nowy',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:#FFC600">publish-ready, on a date you can plan around</span></h1>
+        <p style="margin:0;max-width:640px;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#ABB1B4;text-wrap:pretty">You don’t have the writers. We do — senior technical writers, publish-ready output, delivered in your toolchain.</p>
+      </div>
+    </div>
+  </section>
+<section id="write-for-you" style="background:#1E1E1E;scroll-margin-top:80px">
+    <div style="max-width:1200px;margin:0 auto;padding-left:clamp(20px,5vw,40px);padding-right:clamp(20px,5vw,40px);padding-top:clamp(8px,2vw,24px);padding-bottom:clamp(56px,8vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:22px">
+                <p style="margin:0;font-size:17px;line-height:1.6;color:#ABB1B4;text-wrap:pretty">Your product ships every sprint; the documentation doesn't. Hiring a technical writer takes months and one person can't clear a backlog. We plug in a senior writing team that owns the outcome: you brief, we research, draft, review and hand back content ready to publish in your toolchain.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#758086">Right for you if</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;color:#CBCBCB"><li style="display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55"><span aria-hidden="true" style="flex:0 0 8px;width:8px;height:8px;margin-top:9px;background:#FFC600;transform:rotate(45deg)"></span><span>Engineers or product managers are writing the docs today</span></li><li style="display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55"><span aria-hidden="true" style="flex:0 0 8px;width:8px;height:8px;margin-top:9px;background:#FFC600;transform:rotate(45deg)"></span><span>A launch, audit or customer is waiting on content that doesn't exist yet</span></li><li style="display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55"><span aria-hidden="true" style="flex:0 0 8px;width:8px;height:8px;margin-top:9px;background:#FFC600;transform:rotate(45deg)"></span><span>Volume spikes — a new product line, a re-platform, a compliance deadline — that don't justify a permanent hire</span></li></ul>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding-top:6px">
+          <a href="./Mondi.tech%20Homepage.dc.html#contact" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;background:#FFC600;color:#1E1E1E;font-weight:600;font-size:15px" style-hover="background:#FF8F1F;color:#1E1E1E">Get a quote for your backlog</a>
+          <a href="./Story%20Training%20Modules.dc.html" style="display:inline-flex;align-items:center;min-height:48px;font-weight:600;font-size:15px;color:#FFC600" style-hover="color:#FF8F1F">See 40+ modules delivered →</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px">
+          <div style="display:flex;flex-direction:column;gap:6px;padding:22px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="font-size:32px;line-height:1;font-weight:700;color:#F7F4EB;letter-spacing:-.02em">Days</span><span style="font-size:14px;line-height:1.4;color:#ABB1B4">from brief to first reviewed draft, not weeks</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:22px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="font-size:32px;line-height:1;font-weight:700;color:#F7F4EB;letter-spacing:-.02em">0</span><span style="font-size:14px;line-height:1.4;color:#ABB1B4">pages published without a named human reviewer</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:22px;border-radius:16px;background:#262626;border:1px solid rgba(247,244,235,.08)"><span style="font-size:32px;line-height:1;font-weight:700;color:#F7F4EB;letter-spacing:-.02em">1</span><span style="font-size:14px;line-height:1.4;color:#ABB1B4">point of contact, however many writers are on your work</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;padding:28px;border-radius:20px;background:#262626;border:1px solid rgba(247,244,235,.08)">
+          <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#758086">What we take off your plate</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px 24px;font-size:15px;line-height:1.5;color:#CBCBCB">
+            <span style="display:flex;gap:10px"><span aria-hidden="true" style="color:#FFC600">—</span>API references from OpenAPI specs and engineer interviews</span>
+            <span style="display:flex;gap:10px"><span aria-hidden="true" style="color:#FFC600">—</span>User and admin guides for new releases</span>
+            <span style="display:flex;gap:10px"><span aria-hidden="true" style="color:#FFC600">—</span>Release notes every sprint, on the sprint's cadence</span>
+            <span style="display:flex;gap:10px"><span aria-hidden="true" style="color:#FFC600">—</span>Training modules and courseware from raw source material</span>
+            <span style="display:flex;gap:10px"><span aria-hidden="true" style="color:#FFC600">—</span>Knowledge-base rebuilds and consolidation</span>
+            <span style="display:flex;gap:10px"><span aria-hidden="true" style="color:#FFC600">—</span>Delivery in your format: AsciiDoc, Markdown, DITA, Confluence, LMS</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:28px;border-radius:20px;background:#262626;border:1px solid rgba(247,244,235,.08)">
+          <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#758086">How you buy it</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+            <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:16px;font-weight:700;color:#F7F4EB">Fixed-scope project</span><span style="font-size:14px;line-height:1.5;color:#ABB1B4">A defined set of deliverables, a price and a date. Best for backlogs and launches.</span></div>
+            <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:16px;font-weight:700;color:#F7F4EB">Monthly retainer</span><span style="font-size:14px;line-height:1.5;color:#ABB1B4">Reserved writer capacity that follows your release cycle. Best for continuous product documentation.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section style="background:#1E1E1E;padding:0 clamp(20px,5vw,40px) clamp(48px,6vw,72px)">
+    <a href="./We%20Help%20You%20Do%20It%20Better.dc.html" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 32px;border-radius:20px;background:#262626;border:1px solid rgba(247,244,235,.08);color:#F7F4EB;transition:border-color .2s" style-hover="border-color:rgba(255,198,0,.5);color:#F7F4EB"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#FFC600">Have writers already?</span><span style="font-size:20px;font-weight:700">Track 2 · We help you do it better</span><span style="font-size:14px;color:#ABB1B4">We rebuild your team’s content pipeline and hand it over.</span></span><span aria-hidden="true" style="font-size:22px;color:#FFC600">→</span></a>
+  </section>
+<section style="background:#1E1E1E;padding:0 clamp(20px,5vw,40px) clamp(72px,10vw,120px)">
+    <div style="max-width:1200px;margin:0 auto;background:#FFC600;color:#1E1E1E;border-radius:28px;padding:clamp(40px,6vw,64px) clamp(24px,5vw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px">
+      <h2 style="margin:0;font-size:clamp(26px,3.2vw,40px);line-height:1.12;letter-spacing:-.015em;font-weight:700;max-width:560px;text-wrap:balance">Ready to scope a project? <span style="font-family:'Poltawski Nowy',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0">Let's talk.</span></h2>
+      <a href="./Mondi.tech%20Homepage.dc.html#contact" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 32px;border-radius:999px;background:#1E1E1E;color:#F7F4EB;font-weight:600;font-size:16px;transition:background .2s" style-hover="background:#333;color:#F7F4EB">Contact us</a>
+    </div>
+  </section>
+</main>
+
+<footer style="background:#161616;border-top:1px solid rgba(247,244,235,.08);color:#ABB1B4">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,72px) clamp(20px,5vw,40px) 32px;display:flex;flex-direction:column;gap:44px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:18px;grid-column:span 1">
+        <img src="./assets/logo-mono.svg" alt="Mondi.tech" style="height:56px;width:auto;display:block;align-self:flex-start">
+        <p style="margin:0;font-size:15px;line-height:1.5;color:#8C9698">Content, engineered for the AI era.</p>
+      </div>
+      <address style="font-style:normal;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.6">
+        <span style="color:#F7F4EB;font-weight:600">Mondi.tech Kft.</span>
+        <span>Váci út 1–3, 1062 Budapest, Hungary</span>
+        <a href="tel:+3612345678" style="color:#ABB1B4;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#FFC600">+36 1 234 5678</a>
+        <a href="mailto:hello@mondi.tech" style="color:#ABB1B4;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#FFC600">hello@mondi.tech</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" style="color:#ABB1B4;display:inline-flex;min-height:32px;align-items:center;font-weight:500" style-hover="color:#FFC600">LinkedIn ↗</a>
+      </address>
+      <nav aria-label="Footer" style="display:flex;flex-direction:column;gap:2px;font-size:15px">
+        <a href="./Mondi.tech%20Homepage.dc.html" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">About us</a>
+        <a href="./Mondi.tech%20Homepage.dc.html#team" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Team</a>
+        <a href="./Services.dc.html" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Services</a>
+        <a href="./Success%20Stories.dc.html" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Success stories</a>
+        <a href="./Mondi.tech%20Homepage.dc.html#contact" style="color:#ABB1B4;display:inline-flex;min-height:36px;align-items:center" style-hover="color:#FFC600">Contact us</a>
+      </nav>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid rgba(247,244,235,.08);font-size:13px;color:#6C767C">
+      <span>© 2026 Mondi.tech. All rights reserved.</span>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="color:#6C767C;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#ABB1B4">Privacy</a>
+        <a href="#" style="color:#6C767C;display:inline-flex;min-height:32px;align-items:center" style-hover="color:#ABB1B4">Careers</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>
