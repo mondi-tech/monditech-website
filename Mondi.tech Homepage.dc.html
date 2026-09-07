@@ -90,7 +90,7 @@
       </div>
       <div class="client-carousel">
         <div class="client-carousel__track" ref="{{ rowRef }}" onPointerDown="{{ onDragStart }}" onPointerMove="{{ onDragMove }}" onPointerUp="{{ onDragEnd }}" onPointerLeave="{{ onDragEnd }}" onPointerCancel="{{ onDragEnd }}" onMouseMove="{{ onHoverMove }}" onMouseLeave="{{ onHoverLeave }}" role="list" aria-label="Client logos">
-          <sc-for list="{{ clients }}" as="c" hint-placeholder-count="7">
+          <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8">
             <div role="listitem" class="client-carousel__item">
               <img src="{{ c.src }}" alt="{{ c.name }}" draggable="false" class="client-carousel__logo">
             </div>
@@ -183,11 +183,11 @@
         <h2 id="contact-h" class="section-title contact-panel__title">Talk to us about <span class="accent">your content needs</span></h2>
         <p class="contact-panel__text">Tell us about the volume, the formats and the deadline. We reply within one business day.</p>
         <div class="contact-panel__links">
-          <a href="mailto:hello@mondi.tech" class="contact-panel__link">hello@mondi.tech</a>
-          <a href="tel:+3612345678" class="contact-panel__link">+36 1 234 5678</a>
+          <a href="mailto:info@mondi.tech" class="contact-panel__link">info@mondi.tech</a>
+          <a href="tel:+3612345678" class="contact-panel__link">+36 20 482 4105</a>
         </div>
       </div>
-      <form action="mailto:hello@mondi.tech" method="post" enctype="text/plain" class="contact-form">
+      <form action="mailto:info@mondi.tech" method="post" enctype="text/plain" class="contact-form">
         <button type="button" onClick="{{ toggleForm }}" aria-expanded="{{ formOpen }}" aria-controls="contact-fields" class="contact-form__toggle">
           <span>{{ formToggleLabel }}</span>
           <span aria-hidden="true" class="contact-form__chevron">↓</span>
@@ -225,10 +225,10 @@
       </div>
       <address class="site-footer__address">
         <span class="site-footer__company">Mondi.tech Kft.</span>
-        <span>Váci út 1–3, 1062 Budapest, Hungary</span>
-        <a href="tel:+3612345678" class="site-footer__link">+36 1 234 5678</a>
-        <a href="mailto:hello@mondi.tech" class="site-footer__link">hello@mondi.tech</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="site-footer__link site-footer__link--social">LinkedIn ↗</a>
+        <span>Jászai Mari tér 5-6, 1137 Budapest, Hungary</span>
+        <a href="tel:+3612345678" class="site-footer__link">+36 20 482 4105</a>
+        <a href="mailto:info@mondi.tech" class="site-footer__link">info@mondi.tech</a>
+        <a href="https://www.linkedin.com/company/mondi-tech/" target="_blank" rel="noopener" class="site-footer__link site-footer__link--social">LinkedIn ↗</a>
       </address>
       <nav aria-label="Footer" class="footer-nav">
         <a href="#top" class="footer-nav__link">About us</a>
@@ -304,6 +304,7 @@ class Component extends DCLogic {
       clients: [
         { name: 'Hewlett Packard Enterprise', src: './uploads/hpe.png' },
         { name: 'HP', src: './uploads/hp.png' },
+        { name: 'HCLTech', src: './uploads/hcltech.png' },
         { name: 'Codecool', src: './uploads/codecool.png' },
         { name: 'Thermo Fisher Scientific', src: './uploads/thermo.png' },
         { name: 'UEFA', src: './uploads/uefa.png' },
