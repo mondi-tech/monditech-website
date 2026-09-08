@@ -1232,6 +1232,87 @@ a:hover { color: var(--color-accent-hover); }
   text-wrap: pretty;
 }
 
+/* Track 1: process flow */
+.track-process .section__inner {
+  padding-top: clamp(16px, 3vw, 40px);
+  gap: 36px;
+}
+.process-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+}
+.process-flow__step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 24px;
+  border-radius: var(--radius-panel);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+}
+.process-flow__number {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: .1em;
+}
+.process-flow__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.process-flow__text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* About page */
+.about-intro .section__inner { padding-top: clamp(16px, 3vw, 40px); gap: 36px; }
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+.about-tracks .section__inner { gap: 36px; }
+
+/* Contact page */
+.contact-page .contact { padding-top: clamp(16px, 3vw, 40px); }
+.contact-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+}
+.contact-details__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px;
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, .35);
+}
+.contact-details__label {
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(30, 30, 30, .7);
+}
+.contact-details__value {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.contact-details__address { font-style: normal; }
+.contact-details__value a { color: var(--color-ink); }
+.contact-form__toggle--static { cursor: default; }
+.contact-details__value a:hover { color: var(--color-text-on-light-muted); }
+
 /* 6. Media queries ------------------------------------------------------ */
 @media (max-width: 760px) {
   .primary-nav { display: none; }
