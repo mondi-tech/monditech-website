@@ -4,6 +4,34 @@
    5. Page sections (home → services → tracks → stories)   6. Media queries
    ========================================================================== */
 
+/* Gotham Medium — used ONLY for the Gotham portion of mixed-font headings (see .mixed-heading rules). */
+@font-face {
+  font-family: "Gotham Medium";
+  src: url("../assets/fonts/Gotham-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Longer descriptive body copy renders in Gotham Medium; UI text, labels, headings and stats keep the default stack. */
+.hero__lead,
+.section-lead,
+.card__text,
+.offer-card__text,
+.panel__text,
+.split__text,
+.team__paragraph,
+.contact-panel__text,
+.process-step__description,
+.process-flow__text,
+.timeline__text,
+.step__text,
+.option__text,
+.dash-list {
+  font-family: "Gotham Medium", var(--font-sans);
+  font-weight: 500;
+}
+
 /* 1. Tokens ------------------------------------------------------------- */
 :root {
   --color-ink: #1E1E1E;               /* dark background AND text on light/accent surfaces */
@@ -14,7 +42,7 @@
   --color-bg-light: var(--color-cream);
   --color-text: var(--color-cream);
   --color-text-soft: #CBCBCB;         /* nav links, body copy inside dark panels */
-  --color-text-muted: #ABB1B4;
+  --color-text-muted: #E2E2E2;        /* body copy on dark surfaces (raised from #ABB1B4 for readability) */
   --color-text-subtle: #8C9698;
   --color-text-faint: #6C767C;
   --color-text-label: #758086;        /* small uppercase labels inside cards */
@@ -29,6 +57,7 @@
 
   --font-sans: "Gotham", "Inter", system-ui, sans-serif;
   --font-serif: "Poltawski Nowy", Georgia, serif;
+  --weight-heading: 500;          /* large display headings — lighter so the serif accent leads */
 
   --content-width: 1200px;
   --gutter: clamp(20px, 5vw, 40px);
@@ -98,7 +127,7 @@ a:hover { color: var(--color-accent-hover); }
   font-size: clamp(28px, 3.8vw, 46px);
   line-height: 1.12;
   letter-spacing: -.015em;
-  font-weight: 700;
+  font-weight: var(--weight-heading);
   text-wrap: balance;
 }
 .section-title--md { font-size: clamp(26px, 3.4vw, 40px); }
@@ -110,6 +139,30 @@ a:hover { color: var(--color-accent-hover); }
   color: var(--color-text-muted);
   text-wrap: pretty;
 }
+/* Mixed-font headings (Gotham + Poltawski accent): the Gotham portion sits at Book weight
+   and ~8% smaller; the accent is scaled back up so it keeps its original size. */
+.hero__title:has(> .accent),
+.section-title:has(> .accent),
+.card__heading:has(> .accent),
+.cta-banner__title:has(> .accent) {
+  font-family: "Gotham Medium", var(--font-sans);
+  font-weight: 500;
+  font-size: calc(var(--mixed-heading-size) * .92);
+}
+.hero__title:has(> .accent) > .accent:not(.hero__title-accent),
+.section-title:has(> .accent) > .accent,
+.card__heading:has(> .accent) > .accent,
+.cta-banner__title:has(> .accent) > .accent {
+  font-size: calc(1em / .92);
+}
+.hero__title { --mixed-heading-size: clamp(30px, 4.6vw, 56px); }
+.section-title { --mixed-heading-size: clamp(28px, 3.8vw, 46px); }
+.section-title--md { --mixed-heading-size: clamp(26px, 3.4vw, 40px); }
+.section-title--sm { --mixed-heading-size: clamp(24px, 3vw, 36px); }
+.contact-panel__title { --mixed-heading-size: clamp(28px, 3.6vw, 44px); }
+.card__heading { --mixed-heading-size: clamp(24px, 2.6vw, 32px); }
+.cta-banner__title { --mixed-heading-size: clamp(26px, 3.2vw, 40px); }
+
 /* Serif accent phrase inside headings */
 .accent {
   font-family: var(--font-serif);
@@ -234,7 +287,7 @@ a:hover { color: var(--color-accent-hover); }
   margin: 0;
   font-size: 24px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: var(--weight-heading);
   color: var(--color-text);
 }
 .card__heading {
@@ -242,7 +295,7 @@ a:hover { color: var(--color-accent-hover); }
   font-size: clamp(24px, 2.6vw, 32px);
   line-height: 1.15;
   letter-spacing: -.015em;
-  font-weight: 700;
+  font-weight: var(--weight-heading);
   color: var(--color-text);
   text-wrap: balance;
 }
@@ -268,7 +321,7 @@ a:hover { color: var(--color-accent-hover); }
   margin: 0;
   font-size: 26px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: var(--weight-heading);
 }
 .offer-card__text {
   margin: 0;
@@ -414,7 +467,7 @@ a:hover { color: var(--color-accent-hover); }
   font-size: clamp(26px, 3.2vw, 40px);
   line-height: 1.12;
   letter-spacing: -.015em;
-  font-weight: 700;
+  font-weight: var(--weight-heading);
   max-width: 560px;
   text-wrap: balance;
 }
@@ -510,7 +563,7 @@ a:hover { color: var(--color-accent-hover); }
   font-size: clamp(30px, 4.6vw, 56px);
   line-height: 1.08;
   letter-spacing: -.02em;
-  font-weight: 700;
+  font-weight: var(--weight-heading);
   color: var(--color-text);
   text-wrap: balance;
 }
@@ -1000,7 +1053,7 @@ a:hover { color: var(--color-accent-hover); }
   font-size: 32px;
   line-height: 1;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-accent);
   letter-spacing: -.02em;
 }
 .stat__label {
@@ -1272,6 +1325,36 @@ a:hover { color: var(--color-accent-hover); }
 }
 
 /* About page */
+.hero--page .hero__lead.about-hero__lead { max-width: 760px; }
+.about-stats {
+  margin: 12px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 12px;
+  max-width: 760px;
+}
+.about-stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 22px;
+  border-radius: var(--radius-panel);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+}
+.about-stats__value {
+  margin: 0;
+  font-size: clamp(22px, 2.2vw, 28px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  color: var(--color-accent);
+}
+.about-stats__label {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
 .about-intro .section__inner { padding-top: clamp(16px, 3vw, 40px); gap: 36px; }
 .about-grid {
   display: grid;
@@ -1305,7 +1388,7 @@ a:hover { color: var(--color-accent-hover); }
 .contact-details__value {
   font-size: 16px;
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-ink);
 }
 .contact-details__address { font-style: normal; }
