@@ -124,6 +124,29 @@
     </div>
   </section>
 
+  <section id="impact" aria-labelledby="impact-h" class="section section--dark impact" ref="{{ impactRef }}">
+    <div class="section__inner container">
+      <div class="section-header section-header--tight">
+        <p class="section-label">Impact</p>
+        <h2 id="impact-h" class="section-title">What changes when <span class="accent">the pipeline is engineered</span></h2>
+      </div>
+      <ol class="impact-grid">
+        <li class="impact-card" style="--i: 0">
+          <p class="impact-card__value">4<span class="impact-card__unit">×</span> <span class="impact-card__label">faster</span></p>
+          <p class="impact-card__copy">From estimated timeline to delivery.</p>
+        </li>
+        <li class="impact-card" style="--i: 1">
+          <p class="impact-card__value">80<span class="impact-card__unit">%</span> <span class="impact-card__label">less human effort</span></p>
+          <p class="impact-card__copy">The same delivery scope with dramatically lower resource demand.</p>
+        </li>
+        <li class="impact-card" style="--i: 2">
+          <p class="impact-card__value">40<span class="impact-card__unit">%</span> <span class="impact-card__label">lower cost</span></p>
+          <p class="impact-card__copy">AI-assisted delivery reduces the overall cost of content development.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <section id="clients" aria-labelledby="clients-h" class="section section--light clients">
     <div class="section__inner container">
       <div class="section-header">
@@ -314,9 +337,20 @@
 class Component extends DCLogic {
   state = { cookie: 'pending', prefs: false, formOpen: false, cats: { functional: true, preferences: false, statistics: false, marketing: false } };
   rowRef = React.createRef();
+  impactRef = React.createRef();
+  impactObserver = null;
   drag = null;
   componentDidMount() {
     try { if (localStorage.getItem('mondi-cookie-consent')) this.setState({ cookie: 'done' }); } catch (e) {}
+    // Impact section: reveal when it scrolls into view; un-reveal when it leaves so the
+    // sequence replays on every downward pass.
+    const impact = this.impactRef.current;
+    if (impact && 'IntersectionObserver' in window) {
+      this.impactObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => impact.classList.toggle('is-revealed', e.isIntersecting));
+      }, { threshold: 0.2 });
+      this.impactObserver.observe(impact);
+    } else if (impact) { impact.classList.add('is-revealed'); }
   }
   autoDir = 0; autoRaf = null;
   setAuto(dir) {
@@ -329,7 +363,10 @@ class Component extends DCLogic {
     const step = () => { const r = this.rowRef.current; if (!r || !this.autoDir) return; r.scrollLeft += this.autoDir * 2.2; this.autoRaf = requestAnimationFrame(step); };
     this.autoRaf = requestAnimationFrame(step);
   }
-  componentWillUnmount() { this.setAuto(0); }
+  componentWillUnmount() {
+    this.setAuto(0);
+    if (this.impactObserver) this.impactObserver.disconnect();
+  }
   save(cats) {
     try { localStorage.setItem('mondi-cookie-consent', JSON.stringify(cats)); } catch (e) {}
     this.setState({ cookie: 'done', cats });
@@ -374,6 +411,7 @@ class Component extends DCLogic {
         const dir = e.clientX < b.left + zone ? -1 : e.clientX > b.right - zone ? 1 : 0; this.setAuto(dir); },
       onHoverLeave: () => this.setAuto(0),
       rowRef: this.rowRef,
+      impactRef: this.impactRef,
     };
   }
 }

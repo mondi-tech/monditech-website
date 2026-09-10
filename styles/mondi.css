@@ -1053,7 +1053,7 @@ a:hover { color: var(--color-accent-hover); }
   font-size: 32px;
   line-height: 1;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-text);
   letter-spacing: -.02em;
 }
 .stat__label {
@@ -1395,6 +1395,62 @@ a:hover { color: var(--color-accent-hover); }
 .contact-details__value a { color: var(--color-ink); }
 .contact-form__toggle--static { cursor: default; }
 .contact-details__value a:hover { color: var(--color-text-on-light-muted); }
+
+/* Home: impact — heading + three yellow statement cards, revealed once in sequence. */
+.impact .section__inner { gap: 40px; padding-top: 0; }
+.impact-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 16px;
+}
+.impact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 300px;
+  padding: clamp(28px, 3vw, 40px);
+  border-radius: var(--radius-card-lg);
+  background: var(--color-accent);
+  color: var(--color-ink);
+  opacity: 0;
+  transform: translateY(192px);
+  transition: opacity 1.4s ease, transform 1.4s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: calc(var(--i) * 320ms);
+}
+.impact.is-revealed .impact-card { opacity: 1; transform: none; }
+.impact-card__value {
+  margin: 0;
+  font-size: clamp(64px, 6.5vw, 96px);
+  line-height: .9;
+  letter-spacing: -.035em;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.impact-card__unit { font-size: .62em; letter-spacing: -.02em; }
+.impact-card__label {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+.impact-card__copy {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(30, 30, 30, .8);
+  text-wrap: pretty;
+}
+@media (prefers-reduced-motion: reduce) {
+  .impact-card { opacity: 1; transform: none; transition: none; }
+}
 
 /* 6. Media queries ------------------------------------------------------ */
 @media (max-width: 760px) {
