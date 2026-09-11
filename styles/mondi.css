@@ -1407,12 +1407,13 @@ a:hover { color: var(--color-accent-hover); }
   gap: 16px;
 }
 .impact-card {
+  white-space: nowrap;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 28px;
   min-height: 300px;
-  padding: clamp(28px, 3vw, 40px);
+  padding: clamp(24px, 2vw, 32px);
   border-radius: var(--radius-card-lg);
   background: var(--color-accent);
   color: var(--color-ink);
@@ -1424,7 +1425,7 @@ a:hover { color: var(--color-accent-hover); }
 .impact.is-revealed .impact-card { opacity: 1; transform: none; }
 .impact-card__value {
   margin: 0;
-  font-size: clamp(64px, 6.5vw, 96px);
+  font-size: clamp(58px, 5.4vw, 82px);
   line-height: .9;
   letter-spacing: -.035em;
   font-weight: 700;
@@ -1441,6 +1442,7 @@ a:hover { color: var(--color-accent-hover); }
   line-height: 1.1;
   letter-spacing: 0;
 }
+
 .impact-card__copy {
   margin: 0;
   font-size: 16px;
@@ -1448,6 +1450,52 @@ a:hover { color: var(--color-accent-hover); }
   color: rgba(30, 30, 30, .8);
   text-wrap: pretty;
 }
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Impact cards: keep the ultra-wide treatment, but scale KPI values down on laptop widths. */
+@media (min-width: 761px) and (max-width: 1500px) {
+
+  .impact-grid {
+    gap: 22px;
+  }
+
+  .impact-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+    min-height: 0;
+    padding: 28px 24px;
+  }
+
+  .impact-card__value {
+    font-size: clamp(80px, 4vw, 98px);
+    white-space: nowrap;
+  }
+
+  .impact-card__unit {
+    font-size: .72em;
+    letter-spacing: -.02em;
+  }
+
+  .impact-card__label {
+    margin-top: 10px;
+    font-size: clamp(34px, 2.2vw, 42px);
+  }
+
+  .impact-card__copy {
+    margin: 0;
+    width: 100%;
+    padding-right: 32px;
+    font-size: 16px;
+    line-height: 1.55;
+    white-space: normal;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .impact-card { opacity: 1; transform: none; transition: none; }
 }
