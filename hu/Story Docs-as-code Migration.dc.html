@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DITA–AsciiDoc migráció – esettanulmány | Mondi.tech</title>
+<meta name="description" content="Egy telekommunikációs technológiai vállalat teljes dokumentációs könyvtárát költöztettük DITA formátumból docs-as-code eszközláncba – többéves átfutás és minőségromlás nélkül.">
+<link rel="canonical" href="https://mondi.tech/hu/story-docs-as-code-migration.html">
+<link rel="alternate" hreflang="en" href="https://mondi.tech/story-docs-as-code-migration.html">
+<link rel="alternate" hreflang="hu" href="https://mondi.tech/hu/story-docs-as-code-migration.html">
+<link rel="alternate" hreflang="x-default" href="https://mondi.tech/story-docs-as-code-migration.html">
+<meta property="og:title" content="DITA–AsciiDoc migráció – esettanulmány | Mondi.tech">
+<meta property="og:description" content="Egy telekommunikációs technológiai vállalat teljes dokumentációs könyvtárát költöztettük DITA formátumból docs-as-code eszközláncba – többéves átfutás és minőségromlás nélkül.">
+<meta property="og:url" content="https://mondi.tech/hu/story-docs-as-code-migration.html">
+<meta property="og:image" content="https://mondi.tech/assets/og-share-card.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DITA–AsciiDoc migráció – esettanulmány | Mondi.tech">
+<meta name="twitter:description" content="Egy telekommunikációs technológiai vállalat teljes dokumentációs könyvtárát költöztettük DITA formátumból docs-as-code eszközláncba – többéves átfutás és minőségromlás nélkül.">
+<meta name="twitter:image" content="https://mondi.tech/assets/og-share-card.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="../support.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "DITA–AsciiDoc migráció – esettanulmány",
+  "description": "Egy telekommunikációs technológiai vállalat teljes dokumentációs könyvtárát költöztettük DITA formátumból docs-as-code eszközláncba – többéves átfutás és minőségromlás nélkül.",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mondi.tech/hu/story-docs-as-code-migration.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mondi.tech Kft.",
+    "url": "https://mondi.tech/hu/"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Mondi.tech Kft."
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Docs-as-code migráció DITA formátumból AsciiDocba"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Kezdőlap",
+      "item": "https://mondi.tech/hu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sikertörténetek",
+      "item": "https://mondi.tech/hu/success-stories.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Docs-as-code migráció",
+      "item": "https://mondi.tech/hu/story-docs-as-code-migration.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="../styles/mondi.css">
+</helmet>
+
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a href="./Mondi.tech%20Homepage.dc.html" aria-label="Mondi.tech kezdőlap" class="site-header__logo">
+      <img src="../assets/logo-color.svg" alt="Mondi.tech" width="526" height="252">
+    </a>
+    <nav aria-label="Elsődleges" class="primary-nav">
+      <a href="./About.dc.html" class="primary-nav__link">Rólunk</a>
+      <a href="./Services.dc.html" class="primary-nav__link">Szolgáltatások</a>
+      <a href="./Success%20Stories.dc.html" class="primary-nav__link">Sikertörténetek</a>
+      <a href="./Contact.dc.html" class="button button--primary primary-nav__cta">Kapcsolat</a>
+      <a href="/story-docs-as-code-migration.html" class="language-switcher" aria-label="Váltás angol nyelvre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg><span>EN</span></a>
+    </nav>
+    <a href="/story-docs-as-code-migration.html" class="language-switcher language-switcher--mobile" aria-label="Váltás angol nyelvre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg><span>EN</span></a>
+    <a href="./Contact.dc.html" class="button button--primary site-header__mobile-cta">Kapcsolat</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--page">
+    <img src="../assets/pattern.svg" alt="" aria-hidden="true" class="hero__pattern" width="1920" height="1080">
+    <div class="hero__fade"></div>
+    <div class="hero__inner container">
+      <div class="hero__content">
+        <p class="section-label">Sikertörténet · Telekommunikációs technológia</p>
+        <h1 class="hero__title">Több tízezer oldal <span class="accent">DITA-ból AsciiDocba</span></h1>
+        <p class="hero__lead">Egy telekommunikációs technológiai vállalat teljes dokumentációs könyvtárát költöztettük DITA formátumból docs-as-code eszközláncba — többéves átfutás és minőségromlás nélkül.</p>
+      </div>
+    </div>
+  </section>
+  <section class="metrics">
+    <div class="metrics__inner container">
+      <dl class="metrics__grid">
+        <div class="metric-card"><dt class="metric-card__label">konvertált oldal</dt><dd class="metric-card__value">Több tízezer</dd></div>
+        <div class="metric-card"><dt class="metric-card__label">egységes forrásformátum</dt><dd class="metric-card__value">DITA → AsciiDoc</dd></div>
+        <div class="metric-card"><dt class="metric-card__label">szakértő által ellenőrizve</dt><dd class="metric-card__value">100%</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--light split">
+    <div class="split__inner container">
+      <div class="section-header section-header--tight">
+        <p class="section-label">Kihívás</p>
+        <h2 class="section-title section-title--sm">Ekkora volumenhez <span class="accent">az AI már nem extra, hanem alap</span></h2>
+      </div>
+      <p class="split__text">A DITA-alapú könyvtár hosszú évek alatt nőtt ekkorára: mély témastruktúrák, feltételes profilozás, több ezer kereszthivatkozás és számos következetlen jelölés halmozódott fel benne. A kézi konverzió nem jöhetett szóba, egy egyszerű szkript pedig túl sok hibás linket és rosszul formázott táblázatot hagyott volna hátra.</p>
+    </div>
+  </section>
+
+  <section class="section section--dark split">
+    <div class="split__inner container">
+      <div class="section-header section-header--tight">
+        <p class="section-label">Megközelítés</p>
+        <h2 class="section-title section-title--sm">Szkriptek és AI segítik a munkát, <span class="accent">szakemberek döntenek</span></h2>
+        <div class="tools">
+          <p class="eyebrow-label">Használt eszközök</p>
+          <div class="tag-list tag-list--static">
+            <span class="tag">DITA</span>
+            <span class="tag">AsciiDoc</span>
+            <span class="tag">Python konverziós szkriptek</span>
+            <span class="tag">LLM-támogatott javítás</span>
+            <span class="tag">Git</span>
+            <span class="tag">CI publikálás</span>
+          </div>
+        </div>
+      </div>
+      <ol class="step-list">
+        <li class="step"><span class="step__number">01</span><p class="step__text">Elemeztük a DITA-forrást, besoroltuk a tartalmi mintákat, és felmértük, hol működik megbízhatóan az automatizált konverzió, illetve hol hibázna.</p></li>
+        <li class="step"><span class="step__number">02</span><p class="step__text">Automatizált DITA–AsciiDoc konverziós pipeline-t építettünk, megőrizve a struktúrát, a feltételes tartalmakat és a kereszthivatkozásokat.</p></li>
+        <li class="step"><span class="step__number">03</span><p class="step__text">LLM-ek segítségével javítottuk, amivel a szkriptek nem boldogultak: a szabálytalan táblázatokat, az elcsúszott soron belüli jelöléseket és a következetlen terminológiát.</p></li>
+        <li class="step"><span class="step__number">04</span><p class="step__text">Mielőtt az új Git-repositoryba került, minden konvertált oldalt szövegíró ellenőrzött egy rögzített szempontrendszer alapján.</p></li>
+        <li class="step"><span class="step__number">05</span><p class="step__text">Beállítottuk az AsciiDoc buildet és a CI publikációs pipeline-t, majd betanítottuk a belső csapatot az új munkafolyamatra.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--light split">
+    <div class="split__inner container">
+      <div class="section-header section-header--tight">
+        <p class="section-label">Eredmény</p>
+        <h2 class="section-title section-title--sm">Az új rendszer elkészült, <span class="accent">a csapat átvette</span></h2>
+      </div>
+      <div class="split__body">
+        <p class="split__text">A teljes könyvtár egyszerű szöveges AsciiDoc formátumba és verziókezelés alá került. Automatikusan publikálható, és a mérnökök, valamint a szövegírók egyaránt szerkeszthetik. Az automatizált konverzió, az AI-támogatott javítás és a szakértői ellenőrzés együtt a kézi megoldás idejének töredékére rövidítette a migrációt.</p>
+        <a href="./Story%20Training%20Modules.dc.html" class="link-underline link-underline--ink">Következő: 40+ oktatási modul →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-spacer"></div>
+  <section class="cta">
+    <div class="cta-banner container">
+      <h2 class="cta-banner__title">Hasonló projekten dolgozik? <span class="accent">Beszéljük át.</span></h2>
+      <a href="./Contact.dc.html" class="button button--dark">Kapcsolatfelvétel</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../assets/logo-mono.svg" alt="Mondi.tech" class="site-footer__logo" width="443" height="205">
+        <p class="site-footer__tagline">Műszaki tartalom az AI korszakára tervezve.</p>
+      </div>
+      <address class="site-footer__address">
+        <span class="site-footer__company">Mondi.tech Kft.</span>
+        <span>1137 Budapest, Jászai Mari tér 5–6., Magyarország</span>
+        <a href="tel:+36204826070" class="site-footer__link">+36 20 482 6070</a>
+        <a href="mailto:info@mondi.tech" class="site-footer__link">info@mondi.tech</a>
+        <a href="https://www.linkedin.com/company/mondi-tech/" target="_blank" rel="noopener" class="site-footer__link site-footer__link--social">LinkedIn ↗</a>
+      </address>
+      <nav aria-label="Lábléc" class="footer-nav">
+        <a href="./About.dc.html" class="footer-nav__link">Rólunk</a>
+        <a href="./Services.dc.html" class="footer-nav__link">Szolgáltatások</a>
+        <a href="./Success%20Stories.dc.html" class="footer-nav__link">Sikertörténetek</a>
+        <a href="./Contact.dc.html" class="footer-nav__link">Kapcsolat</a>
+      </nav>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© 2026 Mondi.tech. Minden jog fenntartva.</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>
