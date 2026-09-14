@@ -16,7 +16,9 @@
 <meta name="twitter:description" content="Large volumes of technical content, short deadlines, no compromise on quality. We pair experienced writers with AI-assisted workflows to deliver product documentation that performs.">
 <meta name="twitter:image" content="https://mondi.tech/assets/og-share-card.png">
 <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-<script src="./support.js"></script>
+<link rel="stylesheet" href="./styles/mondi.css">
+<script src="./scripts/site.js" defer></script>
+<noscript><style>.impact-card{opacity:1;transform:none;transition:none}</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,23 +50,18 @@
 </script>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="./styles/mondi.css">
-</helmet>
-
 <header class="site-header">
   <div class="site-header__inner container">
     <a href="#top" aria-label="Mondi.tech home" class="site-header__logo">
       <img src="./assets/logo-color.svg" alt="Mondi.tech" width="526" height="252">
     </a>
     <nav aria-label="Primary" class="primary-nav">
-      <a href="./About.dc.html" class="primary-nav__link">About</a>
-      <a href="./Services.dc.html" class="primary-nav__link">Services</a>
-      <a href="./Success%20Stories.dc.html" class="primary-nav__link">Success stories</a>
-      <a href="./Contact.dc.html" class="button button--primary primary-nav__cta">Contact</a>
+      <a href="/about.html" class="primary-nav__link">About</a>
+      <a href="/services.html" class="primary-nav__link">Services</a>
+      <a href="/success-stories.html" class="primary-nav__link">Success stories</a>
+      <a href="/contact.html" class="button button--primary primary-nav__cta">Contact</a>
     </nav>
-    <a href="./Contact.dc.html" class="button button--primary site-header__mobile-cta">Contact</a>
+    <a href="/contact.html" class="button button--primary site-header__mobile-cta">Contact</a>
   </div>
 </header>
 
@@ -104,7 +101,7 @@
             <span class="tag">AI-assisted drafting</span>
             <span class="tag">Managed delivery</span>
           </div>
-          <a href="./We%20Write%20It%20For%20You.dc.html" class="text-link">See how it works →</a>
+          <a href="/we-write-it-for-you.html" class="text-link">See how it works →</a>
         </article>
         <article class="card service-card">
           <div aria-hidden="true" class="card__icon">
@@ -116,13 +113,13 @@
             <span class="tag">AI workflow consulting</span>
             <span class="tag">Process audits</span>
           </div>
-          <a href="./We%20Help%20You%20Do%20It%20Better.dc.html" class="text-link">See how it works →</a>
+          <a href="/we-help-you-do-it-better.html" class="text-link">See how it works →</a>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="impact" aria-labelledby="impact-h" class="section section--dark impact" ref="{{ impactRef }}">
+  <section id="impact" aria-labelledby="impact-h" class="section section--dark impact" data-reveal data-reveal-threshold="0.2">
     <div class="section__inner container">
       <div class="section-header section-header--tight">
         <p class="section-label">Impact</p>
@@ -152,12 +149,49 @@
         <h2 id="clients-h" class="section-title"><span class="accent">Who already trusts us</span> — from lean startups to global enterprises</h2>
       </div>
       <div class="client-carousel">
-        <div class="client-carousel__track" ref="{{ rowRef }}" onPointerDown="{{ onDragStart }}" onPointerMove="{{ onDragMove }}" onPointerUp="{{ onDragEnd }}" onPointerLeave="{{ onDragEnd }}" onPointerCancel="{{ onDragEnd }}" onMouseMove="{{ onHoverMove }}" onMouseLeave="{{ onHoverLeave }}" role="list" aria-label="Client logos">
-          <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8">
-            <div role="listitem" class="client-carousel__item">
-              <img src="{{ c.src }}" alt="{{ c.name }}" draggable="false" class="client-carousel__logo" loading="lazy">
-            </div>
-          </sc-for>
+        <div class="client-carousel__track" data-carousel role="list" aria-label="Client logos">
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/hpe.png" alt="Hewlett Packard Enterprise" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/SAP.png" alt="SAP" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/abb.png" alt="ABB" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/uefa.png" alt="UEFA" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/hp.png" alt="HP" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/Mars-Petcare.png" alt="Mars Petcare" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/thermo.png" alt="Thermo Fisher Scientific" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/hcltech.png" alt="HCLTech" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/acolad.png" alt="Acolad" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/precisely.png" alt="Precisely" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/bluecat-1.png" alt="BlueCat" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/codecool.png" alt="Codecool" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/medicor.png" alt="Medicor" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
+          <div role="listitem" class="client-carousel__item">
+            <img src="./uploads/BHE.png" alt="BHE" draggable="false" class="client-carousel__logo" loading="lazy">
+          </div>
           <div aria-hidden="true" class="client-carousel__spacer"></div>
         </div>
       </div>
@@ -179,7 +213,7 @@
             <span class="tag">DITA → AsciiDoc</span>
             <span class="tag">LLM cleanup</span>
           </div>
-          <a href="./Story%20Docs-as-code%20Migration.dc.html" class="text-link">Read the story →</a>
+          <a href="/story-docs-as-code-migration.html" class="text-link">Read the story →</a>
         </article>
         <article class="card story-card">
           <p class="card__eyebrow">Technical training content</p>
@@ -189,10 +223,10 @@
             <span class="tag">LLM pipeline</span>
             <span class="tag">Human-in-the-loop</span>
           </div>
-          <a href="./Story%20Training%20Modules.dc.html" class="text-link">Read the story →</a>
+          <a href="/story-training-modules.html" class="text-link">Read the story →</a>
         </article>
       </div>
-      <a href="./Success%20Stories.dc.html" class="link-underline">See all success stories →</a>
+      <a href="/success-stories.html" class="link-underline">See all success stories →</a>
     </div>
   </section>
 
@@ -236,7 +270,7 @@
       <div class="team__text">
         <p class="team__paragraph">Our team combines senior technical writers with hands-on AI expertise. We know how good documentation is built — structure, terminology, review cycles, tooling — and we know how to apply AI to each of those steps without lowering the bar.</p>
         <p class="team__paragraph">The result: documentation that meets enterprise standards, delivered at a pace traditional teams can't match.</p>
-        <a href="./About.dc.html" class="link-underline">About Mondi.tech →</a>
+        <a href="/about.html" class="link-underline">About Mondi.tech →</a>
       </div>
     </div>
   </section>
@@ -252,29 +286,27 @@
         </div>
       </div>
       <form action="mailto:info@mondi.tech" method="post" enctype="text/plain" class="contact-form">
-        <button type="button" onClick="{{ toggleForm }}" aria-expanded="{{ formOpen }}" aria-controls="contact-fields" class="contact-form__toggle">
-          <span>{{ formToggleLabel }}</span>
+        <button type="button" data-form-toggle="closed" aria-expanded="true" aria-controls="contact-fields" class="contact-form__toggle">
+          <span data-label-on="Send us a message" data-label-off="Or send us a message here">Send us a message</span>
           <span aria-hidden="true" class="contact-form__chevron">↓</span>
         </button>
-        <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
-          <div id="contact-fields" class="contact-form__fields">
-            <div class="contact-form__row">
-              <label class="form-field">
-                <span>Name</span>
-                <input id="name" name="name" type="text" required class="form-field__input">
-              </label>
-              <label class="form-field">
-                <span>Work email</span>
-                <input id="email" name="email" type="email" required class="form-field__input">
-              </label>
-            </div>
+        <div id="contact-fields" class="contact-form__fields">
+          <div class="contact-form__row">
             <label class="form-field">
-              <span>What do you need?</span>
-              <textarea id="message" name="message" rows="4" required class="form-field__input form-field__input--textarea"></textarea>
+              <span>Name</span>
+              <input id="name" name="name" type="text" required class="form-field__input">
             </label>
-            <button type="submit" class="button button--dark contact-form__submit">Send message</button>
+            <label class="form-field">
+              <span>Work email</span>
+              <input id="email" name="email" type="email" required class="form-field__input">
+            </label>
           </div>
-        </sc-if>
+          <label class="form-field">
+            <span>What do you need?</span>
+            <textarea id="message" name="message" rows="4" required class="form-field__input form-field__input--textarea"></textarea>
+          </label>
+          <button type="submit" class="button button--dark contact-form__submit">Send message</button>
+        </div>
       </form>
     </div>
   </section>
@@ -295,10 +327,10 @@
         <a href="https://www.linkedin.com/company/mondi-tech/" target="_blank" rel="noopener" class="site-footer__link site-footer__link--social">LinkedIn ↗</a>
       </address>
       <nav aria-label="Footer" class="footer-nav">
-        <a href="./About.dc.html" class="footer-nav__link">About</a>
-        <a href="./Services.dc.html" class="footer-nav__link">Services</a>
-        <a href="./Success%20Stories.dc.html" class="footer-nav__link">Success stories</a>
-        <a href="./Contact.dc.html" class="footer-nav__link">Contact</a>
+        <a href="/about.html" class="footer-nav__link">About</a>
+        <a href="/services.html" class="footer-nav__link">Services</a>
+        <a href="/success-stories.html" class="footer-nav__link">Success stories</a>
+        <a href="/contact.html" class="footer-nav__link">Contact</a>
       </nav>
     </div>
     <div class="site-footer__bottom">
@@ -307,112 +339,36 @@
   </div>
 </footer>
 
-<sc-if value="{{ showCookie }}" hint-placeholder-val="{{ false }}">
+<template id="cookie-consent" data-consent-key="mondi-cookie-consent">
   <div role="dialog" aria-live="polite" aria-label="Cookie consent" class="cookie-banner">
     <div class="cookie-banner__text">
       <p class="cookie-banner__title">We use cookies</p>
       <p class="cookie-banner__description">Functional cookies keep the site working. With your consent we also use preferences, statistics and marketing cookies to improve the site and our communication.</p>
     </div>
-    <sc-if value="{{ showPrefs }}" hint-placeholder-val="{{ false }}">
-      <div class="cookie-banner__prefs">
-        <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
-          <label class="cookie-option">
-            <input type="checkbox" checked="{{ cat.on }}" disabled="{{ cat.locked }}" onChange="{{ cat.toggle }}" class="cookie-option__checkbox">
-            <span>{{ cat.label }}</span>
-          </label>
-        </sc-for>
-      </div>
-    </sc-if>
+    <div data-cookie-prefs class="cookie-banner__prefs">
+      <label class="cookie-option">
+        <input type="checkbox" checked disabled data-cookie-category="functional" class="cookie-option__checkbox">
+        <span>Functional (required)</span>
+      </label>
+      <label class="cookie-option">
+        <input type="checkbox" data-cookie-category="preferences" class="cookie-option__checkbox">
+        <span>Preferences</span>
+      </label>
+      <label class="cookie-option">
+        <input type="checkbox" data-cookie-category="statistics" class="cookie-option__checkbox">
+        <span>Statistics</span>
+      </label>
+      <label class="cookie-option">
+        <input type="checkbox" data-cookie-category="marketing" class="cookie-option__checkbox">
+        <span>Marketing</span>
+      </label>
+    </div>
     <div class="cookie-banner__actions">
-      <button type="button" onClick="{{ acceptAll }}" class="button button--primary button--small">{{ acceptLabel }}</button>
-      <button type="button" onClick="{{ denyAll }}" class="button button--outline button--small">Deny</button>
-      <button type="button" onClick="{{ togglePrefs }}" class="button button--ghost cookie-banner__prefs-toggle">{{ prefsLabel }}</button>
+      <button type="button" data-cookie-action="accept" class="button button--primary button--small" data-label-on="Save selection" data-label-off="Accept">Accept</button>
+      <button type="button" data-cookie-action="deny" class="button button--outline button--small">Deny</button>
+      <button type="button" data-cookie-action="prefs" class="button button--ghost cookie-banner__prefs-toggle" data-label-on="Hide preferences" data-label-off="View preferences">View preferences</button>
     </div>
   </div>
-</sc-if>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;cookieBanner&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
-class Component extends DCLogic {
-  state = { cookie: 'pending', prefs: false, formOpen: false, cats: { functional: true, preferences: false, statistics: false, marketing: false } };
-  rowRef = React.createRef();
-  impactRef = React.createRef();
-  impactObserver = null;
-  drag = null;
-  componentDidMount() {
-    try { if (localStorage.getItem('mondi-cookie-consent')) this.setState({ cookie: 'done' }); } catch (e) {}
-    // Impact section: reveal when it scrolls into view; un-reveal when it leaves so the
-    // sequence replays on every downward pass.
-    const impact = this.impactRef.current;
-    if (impact && 'IntersectionObserver' in window) {
-      this.impactObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => impact.classList.toggle('is-revealed', e.isIntersecting));
-      }, { threshold: 0.2 });
-      this.impactObserver.observe(impact);
-    } else if (impact) { impact.classList.add('is-revealed'); }
-  }
-  autoDir = 0; autoRaf = null;
-  setAuto(dir) {
-    if (dir === this.autoDir) return;
-    this.autoDir = dir;
-    const el = this.rowRef.current;
-    if (el) el.style.scrollSnapType = dir ? 'none' : 'x proximity';
-    if (this.autoRaf) { cancelAnimationFrame(this.autoRaf); this.autoRaf = null; }
-    if (!dir) return;
-    const step = () => { const r = this.rowRef.current; if (!r || !this.autoDir) return; r.scrollLeft += this.autoDir * 2.2; this.autoRaf = requestAnimationFrame(step); };
-    this.autoRaf = requestAnimationFrame(step);
-  }
-  componentWillUnmount() {
-    this.setAuto(0);
-    if (this.impactObserver) this.impactObserver.disconnect();
-  }
-  save(cats) {
-    try { localStorage.setItem('mondi-cookie-consent', JSON.stringify(cats)); } catch (e) {}
-    this.setState({ cookie: 'done', cats });
-  }
-  renderVals() {
-    const p = this.props, s = this.state;
-    const labels = { functional: 'Functional (required)', preferences: 'Preferences', statistics: 'Statistics', marketing: 'Marketing' };
-    const el = () => this.rowRef.current;
-    return {
-      clients: [
-        { name: 'Hewlett Packard Enterprise', src: './uploads/hpe.png' },
-        { name: 'SAP', src: './uploads/SAP.png' },
-        { name: 'ABB', src: './uploads/abb.png' },
-        { name: 'UEFA', src: './uploads/uefa.png' },
-        { name: 'HP', src: './uploads/hp.png' },
-        { name: 'Mars Petcare', src: './uploads/Mars-Petcare.png' },
-        { name: 'Thermo Fisher Scientific', src: './uploads/thermo.png' },
-        { name: 'HCLTech', src: './uploads/hcltech.png' },
-        { name: 'Acolad', src: './uploads/acolad.png' },
-        { name: 'Precisely', src: './uploads/precisely.png' },
-        { name: 'BlueCat', src: './uploads/bluecat-1.png' },
-        { name: 'Codecool', src: './uploads/codecool.png' },
-        { name: 'Medicor', src: './uploads/medicor.png' },
-        { name: 'BHE', src: './uploads/BHE.png' },
-      ],
-      formOpen: s.formOpen,
-      formToggleLabel: s.formOpen ? 'Send us a message' : 'Or send us a message here',
-      toggleForm: () => this.setState(st => ({ formOpen: !st.formOpen })),
-      showCookie: (p.cookieBanner ?? true) && s.cookie === 'pending',
-      showPrefs: s.prefs,
-      prefsLabel: s.prefs ? 'Hide preferences' : 'View preferences',
-      acceptLabel: s.prefs ? 'Save selection' : 'Accept',
-      categories: Object.keys(labels).map(k => ({ label: labels[k], on: s.cats[k], locked: k === 'functional',
-        toggle: () => this.setState(st => ({ cats: { ...st.cats, [k]: !st.cats[k] } })) })),
-      acceptAll: () => this.save(s.prefs ? s.cats : { functional: true, preferences: true, statistics: true, marketing: true }),
-      denyAll: () => this.save({ functional: true, preferences: false, statistics: false, marketing: false }),
-      togglePrefs: () => this.setState(st => ({ prefs: !st.prefs })),
-      onDragStart: e => { if (e.pointerType !== 'mouse' || !el()) return; this.setAuto(0); this.drag = { x: e.clientX, left: el().scrollLeft, moved: false }; el().style.cursor = 'grabbing'; el().style.scrollSnapType = 'none'; },
-      onDragMove: e => { if (!this.drag || !el()) return; const dx = e.clientX - this.drag.x; if (Math.abs(dx) > 3) this.drag.moved = true; el().scrollLeft = this.drag.left - dx; },
-      onDragEnd: () => { if (!el()) return; this.drag = null; el().style.cursor = 'grab'; el().style.scrollSnapType = 'x proximity'; },
-      onHoverMove: e => { const r = el(); if (!r || this.drag) return; const b = r.getBoundingClientRect(); const zone = Math.min(200, b.width * 0.22);
-        const dir = e.clientX < b.left + zone ? -1 : e.clientX > b.right - zone ? 1 : 0; this.setAuto(dir); },
-      onHoverLeave: () => this.setAuto(0),
-      rowRef: this.rowRef,
-      impactRef: this.impactRef,
-    };
-  }
-}
-</script>
+</template>
 </body>
 </html>
