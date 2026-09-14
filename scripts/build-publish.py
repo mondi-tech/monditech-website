@@ -40,7 +40,7 @@ SITE_JS = ROOT / "scripts" / "publish" / "site.js"
 SITE = "https://mondi.tech"
 
 # (source page, output file, public path)
-PAGES = [
+ENGLISH_PAGES = [
     ("Mondi.tech Homepage.dc.html", "index.html", "/"),
     ("About.dc.html", "about.html", "/about.html"),
     ("Services.dc.html", "services.html", "/services.html"),
@@ -51,7 +51,12 @@ PAGES = [
     ("Story Training Modules.dc.html", "story-training-modules.html", "/story-training-modules.html"),
     ("Contact.dc.html", "contact.html", "/contact.html"),
 ]
-PUBLIC_PATH = {src: path for src, _, path in PAGES}
+PAGES = []
+for source, output, en_path in ENGLISH_PAGES:
+    hu_path = "/hu/" if en_path == "/" else "/hu" + en_path
+    PAGES.append(("en", source, output, en_path, en_path, hu_path))
+    PAGES.append(("hu", "hu/" + source, "hu/" + output, hu_path, en_path, hu_path))
+PUBLIC_PATH = {(lang, Path(src).name): path for lang, src, _, path, _, _ in PAGES}
 
 SUPPORT_TAG = '<script src="./support.js"></script>\n'
 SITE_JS_TAG = '<script src="./scripts/site.js" defer></script>\n'
@@ -68,6 +73,9 @@ REQUIRED_FONTS = [
     "assets/fonts/PoltawskiNowy-Italic.woff2",
 ]
 GOOGLE_FONTS_HOSTS = ("fonts.googleapis.com", "fonts.gstatic.com")
+CORRECT_PHONE_DISPLAY = "+36 20 482 6070"
+CORRECT_PHONE_HREF = "tel:+36204826070"
+OBSOLETE_PHONE_VALUES = ("+36 20 482 " + "4105", "+3620482" + "4105")
 
 # Homepage renderVals() keys this build knows how to render statically.
 KNOWN_LOGIC_KEYS = {
@@ -288,7 +296,9 @@ def render_bindings(page, template, logic):
 def render_page(src_name):
     raw = (ROOT / src_name).read_bytes().decode("utf-8").replace("\r\n", "\n")
 
-    if raw.count(SUPPORT_TAG) != 1:
+    support_tag = ('<script src="../support.js"></script>\n'
+                   if Path(src_name).parent != Path(".") else SUPPORT_TAG)
+    if raw.count(support_tag) != 1:
         raise BuildError(f"{src_name}: expected exactly one support.js tag in <head>")
     body = re.fullmatch(r"(?s)(.*<body>\n)<x-dc>\n(.*)</x-dc>\n(<script type=\"text/x-dc\" data-dc-script([^>]*)>\n(.*?)</script>\n)(</body>\n</html>\n?)", raw)
     if not body:
@@ -316,13 +326,15 @@ def render_page(src_name):
             raise BuildError(f"{src_name}: unrendered DC construct '{token}' remains")
 
     needs_js = re.search(r"\sdata-(reveal|carousel|form-toggle)\b|id=\"cookie-consent\"", template) is not None
-    head_extra = head_links + (SITE_JS_TAG if needs_js else "") + (NOSCRIPT_IMPACT if "data-reveal" in template else "")
-    before = before.replace(SUPPORT_TAG, head_extra)
+    site_js_tag = ('<script src="../scripts/site.js" defer></script>\n'
+                   if Path(src_name).parent != Path(".") else SITE_JS_TAG)
+    head_extra = head_links + (site_js_tag if needs_js else "") + (NOSCRIPT_IMPACT if "data-reveal" in template else "")
+    before = before.replace(support_tag, head_extra)
     return before + template + after, template
 
 
-def rewrite_urls(src_name, text):
-    lookup = {name: path for name, path in PUBLIC_PATH.items()}
+def rewrite_urls(src_name, lang, text):
+    lookup = {name: path for (entry_lang, name), path in PUBLIC_PATH.items() if entry_lang == lang}
 
     def repl(m):
         prefix, ref, frag = m.group(1) or "", m.group(2), m.group(3) or ""
@@ -345,7 +357,8 @@ class PageScan(HTMLParser):
         self.stack, self.counts, self.meta, self.refs, self.ids = [], {}, {}, [], set()
         self.jsonld, self.text, self.visible_text, self.h1 = [], [], [], 0
         self.navs, self.in_jsonld = set(), False
-        self.canonicals = []
+        self.lang = None
+        self.alternates = {}
 
     def bump(self, key, value=None):
         self.counts[key] = self.counts.get(key, 0) + 1
@@ -356,6 +369,8 @@ class PageScan(HTMLParser):
         a = dict(attrs)
         if tag not in self.VOID:
             self.stack.append(tag)
+        if tag == "html":
+            self.lang = a.get("lang")
         if "id" in a:
             self.ids.add(a["id"])
         if tag == "title":
@@ -370,6 +385,10 @@ class PageScan(HTMLParser):
                 self.bump(key, a.get("content", ""))
         elif tag == "link" and a.get("rel") == "canonical":
             self.bump("canonical", a.get("href", ""))
+        elif tag == "link" and a.get("rel") == "alternate" and a.get("hreflang"):
+            code = a["hreflang"]
+            self.bump("hreflang:" + code, a.get("href", ""))
+            self.alternates[code] = a.get("href", "")
         elif tag == "script" and a.get("type") == "application/ld+json":
             self.in_jsonld = True
             self.jsonld.append("")
@@ -406,7 +425,7 @@ def scan(text):
     return p
 
 
-def local_target(ref):
+def local_target(ref, page="index.html"):
     """Map a page-relative or root-relative reference to a path inside Publish/, or None if external."""
     parts = urlsplit(ref)
     if parts.scheme or ref.startswith(("//", "#")):
@@ -414,16 +433,22 @@ def local_target(ref):
     path = unquote(parts.path)
     if path in ("", "/", "./"):
         return "index.html"
-    return posixpath.normpath(path.lstrip("/"))
+    if path.startswith("/"):
+        target = posixpath.normpath(path.lstrip("/"))
+    else:
+        target = posixpath.normpath(posixpath.join(posixpath.dirname(page), path))
+    return posixpath.join(target, "index.html") if path.endswith("/") else target
 
 
 # --------------------------------------------------------------------------- build + validate
 
 def build(out):
     pages = {}
-    for src, dst, _ in PAGES:
+    published_paths = {path.lstrip("/") for _, _, _, path, _, _ in PAGES}
+    for lang, src, dst, _, _, _ in PAGES:
         doc, _ = render_page(src)
-        pages[dst] = rewrite_urls(src, doc)
+        pages[dst] = rewrite_urls(src, lang, doc)
+        (out / dst).parent.mkdir(parents=True, exist_ok=True)
         (out / dst).write_text(pages[dst], encoding="utf-8", newline="\n")
 
     # Collect and copy local assets referenced by the pages (and by their stylesheets).
@@ -431,11 +456,11 @@ def build(out):
     for dst, doc in pages.items():
         p = scan(doc)
         for tag, name, ref in p.refs:
-            target = local_target(ref)
+            target = local_target(ref, dst)
             if target and not target.endswith(".html"):
                 assets.add(target)
         for absolute in re.findall(r"https://mondi\.tech/([^\"'\s<>]+)", doc):
-            if not absolute.endswith((".html", ".xml")):
+            if absolute not in published_paths and not absolute.endswith((".html", ".xml")):
                 assets.add(unquote(absolute))
     assets.discard("scripts/site.js")
     queue = sorted(assets)
@@ -465,7 +490,8 @@ def build(out):
     (out / "scripts").mkdir(exist_ok=True)
     shutil.copyfile(SITE_JS, out / "scripts" / "site.js")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8", newline="\n")
-    urls = "".join(f"  <url>\n    <loc>{SITE}{path}</loc>\n  </url>\n" for _, _, path in PAGES)
+    urls = "".join(f"  <url>\n    <loc>{SITE}{path}</loc>\n  </url>\n"
+                   for _, _, _, path, _, _ in PAGES)
     (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
                                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      f"{urls}</urlset>\n", encoding="utf-8", newline="\n")
@@ -475,7 +501,7 @@ def build(out):
 def validate(out):
     errors = []
     err = errors.append
-    canonical = {dst: SITE + path for _, dst, path in PAGES}
+    canonical = {dst: SITE + path for _, _, dst, path, _, _ in PAGES}
     page_urls = set(canonical.values())
 
     html_files = sorted(p.relative_to(out).as_posix() for p in out.rglob("*.html"))
@@ -493,7 +519,7 @@ def validate(out):
                     err(f"{path.relative_to(out).as_posix()}: Google Fonts reference ({host}) remains")
 
     scans = {}
-    for src, dst, _ in PAGES:
+    for lang, src, dst, _, en_path, hu_path in PAGES:
         doc = (out / dst).read_text(encoding="utf-8")
         p = scans[dst] = scan(doc)
         if re.search(r"info@mondi\.tech|mailto:", doc, re.I):
@@ -516,13 +542,38 @@ def validate(out):
             if p.meta.get(key) != f"{SITE}/assets/og-share-card.png":
                 err(f"{dst}: unexpected {key} {p.meta.get(key)}")
 
+        if p.lang != lang:
+            err(f"{dst}: html lang {p.lang!r} != {lang!r}")
+        expected_alternates = {
+            "en": SITE + en_path,
+            "hu": SITE + hu_path,
+            "x-default": SITE + en_path,
+        }
+        for code, expected in expected_alternates.items():
+            if p.counts.get("hreflang:" + code, 0) != 1 or p.alternates.get(code) != expected:
+                err(f"{dst}: hreflang {code} {p.alternates.get(code)!r} != {expected!r}")
+        switchers = re.findall(
+            r'<a href="([^"]+)" class="language-switcher[^"]*" aria-label="([^"]+)">.*?'
+            r'<span>(HU|EN)</span></a>', doc, re.S)
+        switch_target = hu_path if lang == "en" else en_path
+        switch_label = "Switch language to Hungarian" if lang == "en" else "Váltás angol nyelvre"
+        switch_text = "HU" if lang == "en" else "EN"
+        if len(switchers) != 2 or any(item != (switch_target, switch_label, switch_text) for item in switchers):
+            err(f"{dst}: language switchers do not match target {switch_target} / {switch_text}")
+
         if p.h1 != 1:
             err(f"{dst}: expected one <h1>, found {p.h1}")
-        if not {"Primary", "Footer"} <= p.navs:
+        required_navs = {"Primary", "Footer"} if lang == "en" else {"Elsődleges", "Lábléc"}
+        if not required_navs <= p.navs:
             err(f"{dst}: primary/footer navigation missing")
         visible = " ".join(p.visible_text)
         if len(visible) < 500 or "Mondi.tech Kft." not in visible:
             err(f"{dst}: static visible text looks incomplete ({len(visible)} chars)")
+        if CORRECT_PHONE_DISPLAY not in visible or not any(ref == CORRECT_PHONE_HREF for _, _, ref in p.refs):
+            err(f"{dst}: current phone number or telephone link is missing")
+        for obsolete in OBSOLETE_PHONE_VALUES:
+            if obsolete in doc:
+                err(f"{dst}: obsolete phone value remains: {obsolete}")
 
         # Every text node of the source template must be present in the output.
         _, source_template = render_page_text_source(src)
@@ -559,7 +610,7 @@ def validate(out):
                 if ref[1:] not in p.ids:
                     err(f"{dst}: in-page anchor {ref} has no target")
                 continue
-            target = local_target(ref)
+            target = local_target(ref, dst)
             if target is None:
                 err(f"{dst}: unexpected external reference {ref}")
                 continue
@@ -578,8 +629,8 @@ def validate(out):
 
     sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
     locs = re.findall(r"<loc>([^<]+)</loc>", sitemap)
-    if len(locs) != 9 or set(locs) != page_urls or "lastmod" in sitemap:
-        err(f"sitemap.xml does not list exactly the 9 canonical URLs: {locs}")
+    if len(locs) != 18 or set(locs) != page_urls or "lastmod" in sitemap:
+        err(f"sitemap.xml does not list exactly the 18 canonical URLs: {locs}")
     if f"Sitemap: {SITE}/sitemap.xml" not in (out / "robots.txt").read_text(encoding="utf-8"):
         err("robots.txt does not reference the sitemap")
     return errors
@@ -603,10 +654,17 @@ def iter_strings(value):
 
 
 def main():
-    sources = sorted(ROOT.glob("*.dc.html"))
-    if sorted(p.name for p in sources) != sorted(src for src, _, _ in PAGES):
-        raise BuildError(f"source pages differ from PAGES: {[p.name for p in sources]}")
-    before = {p.name: sha256(p) for p in sources}
+    sources = sorted(ROOT.glob("*.dc.html")) + sorted((ROOT / "hu").glob("*.dc.html"))
+    source_names = [p.relative_to(ROOT).as_posix() for p in sources]
+    expected_sources = [src for _, src, _, _, _, _ in PAGES]
+    if sorted(source_names) != sorted(expected_sources):
+        raise BuildError(f"source pages differ from PAGES: {source_names}")
+    before = {p.relative_to(ROOT).as_posix(): sha256(p) for p in sources}
+    for source in sources:
+        source_text = source.read_text(encoding="utf-8")
+        for obsolete in OBSOLETE_PHONE_VALUES:
+            if obsolete in source_text:
+                raise BuildError(f"{source.relative_to(ROOT).as_posix()}: obsolete phone value remains: {obsolete}")
 
     if STAGING.exists():
         shutil.rmtree(STAGING)
@@ -614,7 +672,7 @@ def main():
     try:
         copied = build(STAGING)
         errors = validate(STAGING)
-        after = {p.name: sha256(p) for p in sources}
+        after = {p.relative_to(ROOT).as_posix(): sha256(p) for p in sources}
         if after != before:
             errors.append("SOURCE PAGES CHANGED DURING BUILD")
         if errors:
@@ -632,7 +690,7 @@ def main():
             shutil.rmtree(STAGING)
 
     print(f"Publish/ regenerated: {len(PAGES)} pages, {len(copied)} copied assets, scripts/site.js, robots.txt, sitemap.xml")
-    for src, dst, path in PAGES:
+    for _, src, dst, path, _, _ in PAGES:
         print(f"  {src:40} -> Publish/{dst:36} {SITE}{path}")
     print("Validation passed; source .dc.html files verified unchanged (SHA-256).")
     return 0
