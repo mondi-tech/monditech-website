@@ -1,1 +1,5 @@
 /Claude outputs
+scripts/__pycache__/*.py
+Poltawski_Nowy.zip
+Inter.zip
+.vscode
