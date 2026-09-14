@@ -55,6 +55,7 @@
 /* Longer descriptive body copy renders in Gotham Medium; UI text, labels, headings and stats keep the default stack. */
 .hero__lead,
 .section-lead,
+.impact-card__copy,
 .card__text,
 .offer-card__text,
 .panel__text,
@@ -94,7 +95,7 @@
   --color-border-accent-hover: rgba(255, 198, 0, .45);
   --color-outline: #8C9698;
 
-  --font-sans: "Gotham", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Poltawski Nowy", Georgia, serif;
   --weight-heading: 500;          /* large display headings — lighter so the serif accent leads */
 
