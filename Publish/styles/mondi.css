@@ -559,6 +559,27 @@ a:hover { color: var(--color-accent-hover); }
   padding: 12px 22px;
   font-size: 15px;
 }
+.language-switcher {
+  color: var(--color-text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 44px;
+  padding: 10px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.language-switcher:hover { color: var(--color-text); }
+.language-switcher svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+.primary-nav .language-switcher { margin-left: 8px; }
+.language-switcher--mobile {
+  display: none;
+  margin-left: auto;
+}
 .site-header__mobile-cta {
   padding: 0 18px;
   height: 44px;
@@ -1542,6 +1563,7 @@ a:hover { color: var(--color-accent-hover); }
 /* 6. Media queries ------------------------------------------------------ */
 @media (max-width: 760px) {
   .primary-nav { display: none; }
+  .language-switcher--mobile { display: inline-flex; }
 }
 @media (min-width: 761px) {
   .site-header__mobile-cta { display: none; }
