@@ -17,6 +17,8 @@
 <meta name="twitter:image" content="https://mondi.tech/assets/og-share-card.png">
 <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./styles/mondi.css">
+<script src="./scripts/contact-config.js" defer></script>
+<script src="./scripts/contact.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -51,31 +53,33 @@
       <div class="contact-panel__intro">
         <h2 id="contact-h" class="section-title contact-panel__title">Reach us <span class="accent">directly</span></h2>
         <div class="contact-details">
-          <div class="contact-details__item"><span class="contact-details__label">Email</span><span class="contact-details__value"><a href="mailto:info@mondi.tech">info@mondi.tech</a></span></div>
           <div class="contact-details__item"><span class="contact-details__label">Phone</span><span class="contact-details__value"><a href="tel:+36204826070">+36 20 482 6070</a></span></div>
           <div class="contact-details__item"><span class="contact-details__label">LinkedIn</span><span class="contact-details__value"><a href="https://www.linkedin.com/company/mondi-tech/" target="_blank" rel="noopener">Mondi.tech on LinkedIn ↗</a></span></div>
           <div class="contact-details__item"><span class="contact-details__label">Address</span><address class="contact-details__value contact-details__address">Mondi.tech Kft.<br>Jászai Mari tér 5-6, 1137 Budapest, Hungary</address></div>
         </div>
       </div>
-      <form action="mailto:info@mondi.tech" method="post" enctype="text/plain" class="contact-form">
+      <form action="" method="post" data-contact-form class="contact-form">
         <p class="contact-form__toggle contact-form__toggle--static">Send us a message</p>
         <div id="contact-fields" class="contact-form__fields">
           <div class="contact-form__row">
             <label class="form-field">
               <span>Name</span>
-              <input id="name" name="name" type="text" required class="form-field__input">
+              <input id="name" name="name" type="text" maxlength="120" required class="form-field__input">
             </label>
             <label class="form-field">
               <span>Work email</span>
-              <input id="email" name="email" type="email" required class="form-field__input">
+              <input id="email" name="email" type="email" maxlength="254" required class="form-field__input">
             </label>
           </div>
           <label class="form-field">
             <span>What do you need?</span>
-            <textarea id="message" name="message" rows="4" required class="form-field__input form-field__input--textarea"></textarea>
+            <textarea id="message" name="message" rows="4" maxlength="10000" required class="form-field__input form-field__input--textarea"></textarea>
           </label>
-          <button type="submit" class="button button--dark contact-form__submit">Send message</button>
+          <button disabled type="submit" class="button button--dark contact-form__submit">Send message</button>
         </div>
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+        <p data-contact-status role="status" aria-live="polite" hidden></p>
+        <noscript>Please enable JavaScript to send a message through this form.</noscript>
       </form>
     </div>
   </section>
@@ -92,7 +96,7 @@
         <span class="site-footer__company">Mondi.tech Kft.</span>
         <span>Jászai Mari tér 5-6, 1137 Budapest, Hungary</span>
         <a href="tel:+36204826070" class="site-footer__link">+36 20 482 6070</a>
-        <a href="mailto:info@mondi.tech" class="site-footer__link">info@mondi.tech</a>
+        <a href="/contact.html" class="site-footer__link">Send us a message</a>
         <a href="https://www.linkedin.com/company/mondi-tech/" target="_blank" rel="noopener" class="site-footer__link site-footer__link--social">LinkedIn ↗</a>
       </address>
       <nav aria-label="Footer" class="footer-nav">

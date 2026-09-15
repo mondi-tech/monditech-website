@@ -496,6 +496,8 @@ def validate(out):
     for src, dst, _ in PAGES:
         doc = (out / dst).read_text(encoding="utf-8")
         p = scans[dst] = scan(doc)
+        if re.search(r"info@mondi\.tech|mailto:", doc, re.I):
+            err(f"{dst}: public mailbox or mailto link remains")
 
         for pattern in (r"<x-dc", r"</x-dc", r"<helmet", r"<sc-", r"\{\{", r"\}\}", r"support\.js", r"data-dc-",
                         r"text/x-dc", r"DCLogic", r"unpkg", r"\breact(dom)?\b", r"\bbabel\b", r"\.dc\.html"):
@@ -519,7 +521,7 @@ def validate(out):
         if not {"Primary", "Footer"} <= p.navs:
             err(f"{dst}: primary/footer navigation missing")
         visible = " ".join(p.visible_text)
-        if len(visible) < 500 or "Mondi.tech Kft." not in visible or "info@mondi.tech" not in visible:
+        if len(visible) < 500 or "Mondi.tech Kft." not in visible:
             err(f"{dst}: static visible text looks incomplete ({len(visible)} chars)")
 
         # Every text node of the source template must be present in the output.
