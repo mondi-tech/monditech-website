@@ -83,9 +83,9 @@
   --color-text: var(--color-cream);
   --color-text-soft: #CBCBCB;         /* nav links, body copy inside dark panels */
   --color-text-muted: #E2E2E2;        /* body copy on dark surfaces (raised from #ABB1B4 for readability) */
-  --color-text-subtle: #8C9698;
+  --color-text-subtle: #bac0c1;
   --color-text-faint: #6C767C;
-  --color-text-label: #758086;        /* small uppercase labels inside cards */
+  --color-text-label: #a3abac;        /* small uppercase labels inside cards */
   --color-text-on-light-muted: #5C5A6B;
   --color-accent: #FFC600;
   --color-accent-hover: #FF8F1F;
@@ -93,7 +93,7 @@
   --color-border-light: #CBCBCB;
   --color-border-accent-soft: rgba(255, 198, 0, .4);
   --color-border-accent-hover: rgba(255, 198, 0, .45);
-  --color-outline: #8C9698;
+  --color-outline: #bac0c1;
 
   --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Poltawski Nowy", Georgia, serif;
