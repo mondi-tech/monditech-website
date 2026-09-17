@@ -20,6 +20,8 @@
 <meta name="twitter:image" content="https://mondi.tech/assets/og-share-card.png">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <script src="../support.js"></script>
+<script src="../scripts/contact-config.js" defer></script>
+<script src="../scripts/contact.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -66,25 +68,28 @@
           <div class="contact-details__item"><span class="contact-details__label">Cím</span><address class="contact-details__value contact-details__address">Mondi.tech Kft.<br>1137 Budapest, Jászai Mari tér 5–6., Magyarország</address></div>
         </div>
       </div>
-      <form action="mailto:info@mondi.tech" method="post" enctype="text/plain" class="contact-form">
+      <form action="" method="post" data-contact-form class="contact-form">
         <p class="contact-form__toggle contact-form__toggle--static">Írjon nekünk</p>
         <div id="contact-fields" class="contact-form__fields">
           <div class="contact-form__row">
             <label class="form-field">
               <span>Név</span>
-              <input id="name" name="name" type="text" required class="form-field__input">
+              <input id="name" name="name" type="text" maxlength="120" required class="form-field__input">
             </label>
             <label class="form-field">
               <span>Munkahelyi e-mail</span>
-              <input id="email" name="email" type="email" required class="form-field__input">
+              <input id="email" name="email" type="email" maxlength="254" required class="form-field__input">
             </label>
           </div>
           <label class="form-field">
             <span>Miben segíthetünk?</span>
-            <textarea id="message" name="message" rows="4" required class="form-field__input form-field__input--textarea"></textarea>
+            <textarea id="message" name="message" rows="4" maxlength="10000" required class="form-field__input form-field__input--textarea"></textarea>
           </label>
-          <button type="submit" class="button button--dark contact-form__submit">Üzenet küldése</button>
+          <button disabled type="submit" class="button button--dark contact-form__submit">Üzenet küldése</button>
         </div>
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+        <p data-contact-status role="status" aria-live="polite" hidden></p>
+        <noscript>Az űrlapon keresztüli üzenetküldéshez kérjük, engedélyezze a JavaScriptet.</noscript>
       </form>
     </div>
   </section>
@@ -101,6 +106,7 @@
         <span class="site-footer__company">Mondi.tech Kft.</span>
         <span>1137 Budapest, Jászai Mari tér 5–6., Magyarország</span>
         <a href="tel:+36204826070" class="site-footer__link">+36 20 482 6070</a>
+        <a href="./Contact.dc.html" class="site-footer__link">Írjon nekünk</a>
         <a href="https://www.linkedin.com/company/mondi-tech/" target="_blank" rel="noopener" class="site-footer__link site-footer__link--social">LinkedIn ↗</a>
       </address>
       <nav aria-label="Lábléc" class="footer-nav">
