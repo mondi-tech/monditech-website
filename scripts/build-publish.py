@@ -50,6 +50,7 @@ PAGES = [
     ("Story Docs-as-code Migration.dc.html", "story-docs-as-code-migration.html", "/story-docs-as-code-migration.html"),
     ("Story Training Modules.dc.html", "story-training-modules.html", "/story-training-modules.html"),
     ("Contact.dc.html", "contact.html", "/contact.html"),
+    ("Privacy.dc.html", "privacy.html", "/privacy.html"),
 ]
 PUBLIC_PATH = {src: path for src, _, path in PAGES}
 
@@ -68,6 +69,8 @@ REQUIRED_FONTS = [
     "assets/fonts/PoltawskiNowy-Italic.woff2",
 ]
 GOOGLE_FONTS_HOSTS = ("fonts.googleapis.com", "fonts.gstatic.com")
+# External links allowed besides LinkedIn, per page.
+EXTERNAL_ALLOWED = {"privacy.html": ("https://www.naih.hu/",)}
 
 # Homepage renderVals() keys this build knows how to render statically.
 KNOWN_LOGIC_KEYS = {
@@ -496,6 +499,7 @@ def validate(out):
     for src, dst, _ in PAGES:
         doc = (out / dst).read_text(encoding="utf-8")
         p = scans[dst] = scan(doc)
+        # The privacy policy shows the mailbox only as HTML character references, so this still applies to it.
         if re.search(r"info@mondi\.tech|mailto:", doc, re.I):
             err(f"{dst}: public mailbox or mailto link remains")
 
@@ -553,7 +557,7 @@ def validate(out):
 
     for dst, p in scans.items():
         for tag, name, ref in p.refs:
-            if ref.startswith(("mailto:", "tel:", SITE + "/", "https://www.linkedin.com/")):
+            if ref.startswith(("mailto:", "tel:", SITE + "/", "https://www.linkedin.com/", *EXTERNAL_ALLOWED.get(dst, ()))):
                 continue  # absolute mondi.tech URLs are checked above
             if ref.startswith("#"):
                 if ref[1:] not in p.ids:
@@ -578,8 +582,8 @@ def validate(out):
 
     sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
     locs = re.findall(r"<loc>([^<]+)</loc>", sitemap)
-    if len(locs) != 9 or set(locs) != page_urls or "lastmod" in sitemap:
-        err(f"sitemap.xml does not list exactly the 9 canonical URLs: {locs}")
+    if len(locs) != len(PAGES) or set(locs) != page_urls or "lastmod" in sitemap:
+        err(f"sitemap.xml does not list exactly the {len(PAGES)} canonical URLs: {locs}")
     if f"Sitemap: {SITE}/sitemap.xml" not in (out / "robots.txt").read_text(encoding="utf-8"):
         err("robots.txt does not reference the sitemap")
     return errors
