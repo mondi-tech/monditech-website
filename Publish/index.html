@@ -302,6 +302,7 @@
             <span>What do you need?</span>
             <textarea id="message" name="message" rows="4" maxlength="10000" required class="form-field__input form-field__input--textarea"></textarea>
           </label>
+          <p class="contact-form__notice">By submitting this form, you acknowledge that Mondi.tech will process the information you provide in accordance with our <a href="/privacy.html">Privacy policy</a>.</p>
           <button disabled type="submit" class="button button--dark contact-form__submit">Send message</button>
         </div>
         <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
@@ -335,6 +336,9 @@
     </div>
     <div class="site-footer__bottom">
       <span>© 2026 Mondi.tech. All rights reserved.</span>
+      <div class="site-footer__legal">
+        <a href="/privacy.html" class="site-footer__legal-link">Privacy policy</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -343,12 +347,12 @@
   <div role="dialog" aria-live="polite" aria-label="Cookie consent" class="cookie-banner">
     <div class="cookie-banner__text">
       <p class="cookie-banner__title">We use cookies</p>
-      <p class="cookie-banner__description">Functional cookies keep the site working. With your consent we also use preferences, statistics and marketing cookies to improve the site and our communication.</p>
+      <p class="cookie-banner__description">We use strictly necessary cookies to make our website work. With your consent, we also use preference, analytics and marketing cookies to understand how our website is used and improve our services and communications.</p>
     </div>
     <div data-cookie-prefs class="cookie-banner__prefs">
       <label class="cookie-option">
         <input type="checkbox" checked disabled data-cookie-category="functional" class="cookie-option__checkbox">
-        <span>Functional (required)</span>
+        <span>Strictly necessary (always active)</span>
       </label>
       <label class="cookie-option">
         <input type="checkbox" data-cookie-category="preferences" class="cookie-option__checkbox">
@@ -356,7 +360,7 @@
       </label>
       <label class="cookie-option">
         <input type="checkbox" data-cookie-category="statistics" class="cookie-option__checkbox">
-        <span>Statistics</span>
+        <span>Analytics</span>
       </label>
       <label class="cookie-option">
         <input type="checkbox" data-cookie-category="marketing" class="cookie-option__checkbox">
@@ -364,9 +368,9 @@
       </label>
     </div>
     <div class="cookie-banner__actions">
-      <button type="button" data-cookie-action="accept" class="button button--primary button--small" data-label-on="Save selection" data-label-off="Accept">Accept</button>
-      <button type="button" data-cookie-action="deny" class="button button--outline button--small">Deny</button>
-      <button type="button" data-cookie-action="prefs" class="button button--ghost cookie-banner__prefs-toggle" data-label-on="Hide preferences" data-label-off="View preferences">View preferences</button>
+      <button type="button" data-cookie-action="accept" class="button button--primary button--small" data-label-on="Save preferences" data-label-off="Accept all">Accept all</button>
+      <button type="button" data-cookie-action="deny" class="button button--outline button--small">Reject non-essential</button>
+      <button type="button" data-cookie-action="prefs" class="button button--ghost cookie-banner__prefs-toggle" data-label-on="Hide preferences" data-label-off="Manage preferences">Manage preferences</button>
     </div>
   </div>
 </template>

@@ -732,6 +732,7 @@ a:hover { color: var(--color-accent-hover); }
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   gap: 12px;
   padding-top: 24px;
   border-top: 1px solid var(--color-border-subtle);
@@ -1052,6 +1053,19 @@ a:hover { color: var(--color-accent-hover); }
   resize: vertical;
   min-height: 44px;
 }
+.contact-form__notice {
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(30, 30, 30, .75);
+}
+.contact-form__notice a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.contact-form__notice a:hover { color: var(--color-text-on-light-muted); }
 .contact-form__submit { align-self: flex-start; }
 
 /* Services: two tracks + combinations */
@@ -1457,6 +1471,50 @@ a:hover { color: var(--color-accent-hover); }
 .contact-form__toggle--static { cursor: default; }
 .contact-details__value a:hover { color: var(--color-text-on-light-muted); }
 
+/* Privacy policy: long-form legal copy on a light section */
+.legal {
+  padding: var(--section-padding) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.legal__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.legal__heading {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.legal p,
+.legal li {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text-on-light-muted);
+  text-wrap: pretty;
+}
+.legal ul {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.legal li::marker { color: var(--color-accent-hover); }
+.legal strong { color: var(--color-ink); font-weight: 600; }
+.legal a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-hover);
+  text-underline-offset: 3px;
+}
+.legal a:hover { color: var(--color-accent-hover); }
+
 /* Home: impact — heading + three yellow statement cards, revealed once in sequence. */
 .impact .section__inner { gap: 40px; padding-top: 0; }
 .impact-grid {
@@ -1565,6 +1623,7 @@ a:hover { color: var(--color-accent-hover); }
 @media (max-width: 760px) {
   .primary-nav { display: none; }
   .language-switcher--mobile { display: inline-flex; }
+  .cookie-banner__prefs-toggle { margin-left: 0; padding-left: 0; }
 }
 @media (min-width: 761px) {
   .site-header__mobile-cta { display: none; }
