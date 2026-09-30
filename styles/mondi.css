@@ -1623,6 +1623,7 @@ a:hover { color: var(--color-accent-hover); }
 @media (max-width: 760px) {
   .primary-nav { display: none; }
   .language-switcher--mobile { display: inline-flex; }
+  .cookie-banner__prefs-toggle { margin-left: 0; padding-left: 0; }
 }
 @media (min-width: 761px) {
   .site-header__mobile-cta { display: none; }

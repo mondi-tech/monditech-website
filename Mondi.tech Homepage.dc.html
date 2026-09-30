@@ -318,7 +318,7 @@
   <div role="dialog" aria-live="polite" aria-label="Cookie consent" class="cookie-banner">
     <div class="cookie-banner__text">
       <p class="cookie-banner__title">We use cookies</p>
-      <p class="cookie-banner__description">Functional cookies keep the site working. With your consent we also use preferences, statistics and marketing cookies to improve the site and our communication.</p>
+      <p class="cookie-banner__description">We use strictly necessary cookies to make our website work. With your consent, we also use preference, analytics and marketing cookies to understand how our website is used and improve our services and communications.</p>
     </div>
     <sc-if value="{{ showPrefs }}" hint-placeholder-val="{{ false }}">
       <div class="cookie-banner__prefs">
@@ -332,7 +332,7 @@
     </sc-if>
     <div class="cookie-banner__actions">
       <button type="button" onClick="{{ acceptAll }}" class="button button--primary button--small">{{ acceptLabel }}</button>
-      <button type="button" onClick="{{ denyAll }}" class="button button--outline button--small">Deny</button>
+      <button type="button" onClick="{{ denyAll }}" class="button button--outline button--small">Reject non-essential</button>
       <button type="button" onClick="{{ togglePrefs }}" class="button button--ghost cookie-banner__prefs-toggle">{{ prefsLabel }}</button>
     </div>
   </div>
@@ -378,7 +378,7 @@ class Component extends DCLogic {
   }
   renderVals() {
     const p = this.props, s = this.state;
-    const labels = { functional: 'Functional (required)', preferences: 'Preferences', statistics: 'Statistics', marketing: 'Marketing' };
+    const labels = { functional: 'Strictly necessary (always active)', preferences: 'Preferences', statistics: 'Analytics', marketing: 'Marketing' };
     const el = () => this.rowRef.current;
     return {
       clients: [
@@ -401,8 +401,8 @@ class Component extends DCLogic {
       toggleForm: () => this.setState(st => ({ formOpen: !st.formOpen })),
       showCookie: (p.cookieBanner ?? true) && s.cookie === 'pending',
       showPrefs: s.prefs,
-      prefsLabel: s.prefs ? 'Hide preferences' : 'View preferences',
-      acceptLabel: s.prefs ? 'Save selection' : 'Accept',
+      prefsLabel: s.prefs ? 'Hide preferences' : 'Manage preferences',
+      acceptLabel: s.prefs ? 'Save preferences' : 'Accept all',
       categories: Object.keys(labels).map(k => ({ label: labels[k], on: s.cats[k], locked: k === 'functional',
         toggle: () => this.setState(st => ({ cats: { ...st.cats, [k]: !st.cats[k] } })) })),
       acceptAll: () => this.save(s.prefs ? s.cats : { functional: true, preferences: true, statistics: true, marketing: true }),
