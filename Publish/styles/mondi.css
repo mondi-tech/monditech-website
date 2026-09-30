@@ -1053,6 +1053,19 @@ a:hover { color: var(--color-accent-hover); }
   resize: vertical;
   min-height: 44px;
 }
+.contact-form__notice {
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(30, 30, 30, .75);
+}
+.contact-form__notice a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.contact-form__notice a:hover { color: var(--color-text-on-light-muted); }
 .contact-form__submit { align-self: flex-start; }
 
 /* Services: two tracks + combinations */
