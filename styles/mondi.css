@@ -757,6 +757,8 @@ a:hover { color: var(--color-accent-hover); }
   z-index: 50;
   margin: 0 auto;
   max-width: 640px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
   background: var(--color-bg-card);
   color: var(--color-text);
   border: 1px solid rgba(247, 244, 235, .12);
@@ -787,6 +789,13 @@ a:hover { color: var(--color-accent-hover); }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
   gap: 8px;
+}
+.cookie-banner__prefs-intro {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
 }
 .cookie-option {
   display: flex;

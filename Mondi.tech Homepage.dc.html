@@ -327,6 +327,7 @@
     </div>
     <sc-if value="{{ showPrefs }}" hint-placeholder-val="{{ false }}">
       <div class="cookie-banner__prefs">
+        <p class="cookie-banner__prefs-intro">You can choose which optional cookies you allow. Strictly necessary cookies are always active because they are required for the website to function.</p>
         <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
           <label class="cookie-option">
             <input type="checkbox" checked="{{ cat.on }}" disabled="{{ cat.locked }}" onChange="{{ cat.toggle }}" class="cookie-option__checkbox">

@@ -310,6 +310,7 @@
             <span>Miben segíthetünk?</span>
             <textarea id="message" name="message" rows="4" maxlength="10000" required class="form-field__input form-field__input--textarea"></textarea>
           </label>
+          <p class="contact-form__notice">Az űrlap elküldésével tudomásul veszi, hogy a Mondi.tech az Ön által megadott személyes adatokat az <a href="/hu/privacy.html">Adatvédelmi tájékoztatóban</a> leírtak szerint kezeli.</p>
           <button disabled type="submit" class="button button--dark contact-form__submit">Üzenet küldése</button>
         </div>
         <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
@@ -343,6 +344,9 @@
     </div>
     <div class="site-footer__bottom">
       <span>© 2026 Mondi.tech. Minden jog fenntartva.</span>
+      <div class="site-footer__legal">
+        <a href="/hu/privacy.html" class="site-footer__legal-link">Adatvédelmi tájékoztató</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -350,21 +354,22 @@
 <template id="cookie-consent" data-consent-key="mondi-cookie-consent">
   <div role="dialog" aria-live="polite" aria-label="Cookie-hozzájárulás" class="cookie-banner">
     <div class="cookie-banner__text">
-      <p class="cookie-banner__title">Cookie-kat használunk</p>
-      <p class="cookie-banner__description">A szükséges cookie-k nélkül az oldal nem működne megfelelően. Hozzájárulásával beállítási, statisztikai és marketingcookie-kat is használunk az oldal és kommunikációnk fejlesztésére.</p>
+      <p class="cookie-banner__title">Sütiket használunk</p>
+      <p class="cookie-banner__description">A weboldal működéséhez feltétlenül szükséges sütiket használunk. Az Ön hozzájárulásával preferencia-, analitikai és marketing sütiket is használunk annak megértésére, hogyan használják weboldalunkat, valamint szolgáltatásaink és kommunikációnk fejlesztésére.</p>
     </div>
     <div data-cookie-prefs class="cookie-banner__prefs">
+      <p class="cookie-banner__prefs-intro">Kiválaszthatja, mely opcionális sütik használatához járul hozzá. A feltétlenül szükséges sütik mindig aktívak, mivel ezek szükségesek a weboldal működéséhez.</p>
       <label class="cookie-option">
         <input type="checkbox" checked disabled data-cookie-category="functional" class="cookie-option__checkbox">
-        <span>Szükséges (kötelező)</span>
+        <span>Feltétlenül szükséges (mindig aktív)</span>
       </label>
       <label class="cookie-option">
         <input type="checkbox" data-cookie-category="preferences" class="cookie-option__checkbox">
-        <span>Beállítások</span>
+        <span>Preferenciák</span>
       </label>
       <label class="cookie-option">
         <input type="checkbox" data-cookie-category="statistics" class="cookie-option__checkbox">
-        <span>Statisztika</span>
+        <span>Analitika</span>
       </label>
       <label class="cookie-option">
         <input type="checkbox" data-cookie-category="marketing" class="cookie-option__checkbox">
@@ -372,9 +377,9 @@
       </label>
     </div>
     <div class="cookie-banner__actions">
-      <button type="button" data-cookie-action="accept" class="button button--primary button--small" data-label-on="Beállítások mentése" data-label-off="Elfogadom">Elfogadom</button>
-      <button type="button" data-cookie-action="deny" class="button button--outline button--small">Elutasítás</button>
-      <button type="button" data-cookie-action="prefs" class="button button--ghost cookie-banner__prefs-toggle" data-label-on="Beállítások elrejtése" data-label-off="Beállítások megtekintése">Beállítások megtekintése</button>
+      <button type="button" data-cookie-action="accept" class="button button--primary button--small" data-label-on="Beállítások mentése" data-label-off="Összes elfogadása">Összes elfogadása</button>
+      <button type="button" data-cookie-action="deny" class="button button--outline button--small">Nem szükséges sütik elutasítása</button>
+      <button type="button" data-cookie-action="prefs" class="button button--ghost cookie-banner__prefs-toggle" data-label-on="Beállítások elrejtése" data-label-off="Beállítások kezelése">Beállítások kezelése</button>
     </div>
   </div>
 </template>
